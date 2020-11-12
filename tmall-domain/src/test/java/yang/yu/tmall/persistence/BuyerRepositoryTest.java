@@ -1,48 +1,13 @@
 package yang.yu.tmall.persistence;
 
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Test;
 import yang.yu.tmall.domain.Buyer;
-import yang.yu.tmall.persistence.BaseIntegrationTest;
-
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
 
 class BuyerRepositoryTest extends BaseIntegrationTest {
-
-    private static EntityManagerFactory emf;
-
-    private EntityManager entityManager;
-
-    private EntityTransaction transaction;
 
     private Buyer buyer1;
 
     private Buyer buyer2;
-
-    @BeforeAll
-    static void beforeAll() {
-        emf = Persistence.createEntityManagerFactory("default");
-    }
-
-    @BeforeEach
-    void beforeEach() {
-        entityManager = emf.createEntityManager();
-        transaction = entityManager.getTransaction();
-        transaction.begin();
-    }
-
-    @AfterEach
-    void tearDown() {
-        transaction.rollback();
-        entityManager.clear();
-    }
-
-    @AfterAll
-    static void afterAll() {
-        emf.close();
-    }
 
     @Test
     void create() {

@@ -1,9 +1,6 @@
 package yang.yu.tmall.domain;
 
-import javax.persistence.CollectionTable;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -12,6 +9,8 @@ import java.util.Set;
 @Table(name = "buyers")
 public class Buyer extends BaseEntity {
 
+    @Basic(optional = false)
+    @Column(nullable = false, unique = true)
     private String name;
 
     private String phoneNumber;
