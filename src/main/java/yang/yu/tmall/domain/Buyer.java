@@ -1,8 +1,12 @@
 package yang.yu.tmall.domain;
 
+import javax.persistence.CollectionTable;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "buyers")
@@ -10,7 +14,13 @@ public class Buyer extends BaseEntity {
 
     private String name;
 
-    Buyer() {
+    private String phoneNumber;
+
+    @ElementCollection
+    @CollectionTable(name = "shipping_addresses")
+    private Set<Address> shippingAddresses = new HashSet<>();
+
+    protected Buyer() {
     }
 
     public Buyer(String name) {
@@ -23,6 +33,26 @@ public class Buyer extends BaseEntity {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public Set<Address> getShippingAddresses() {
+        return new HashSet<>(shippingAddresses);
+    }
+
+    public void addShippingAddresses(Address address) {
+        shippingAddresses.add(address);
+    }
+
+    public void removeShippingAddresses(Address address) {
+        shippingAddresses.remove(address);
     }
 
     @Override

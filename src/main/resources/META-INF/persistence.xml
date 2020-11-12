@@ -5,10 +5,9 @@
              http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
              version="2.2">
 
-    <persistence-unit name="default">
+    <persistence-unit name="default" transaction-type="RESOURCE_LOCAL">
         <description> Hibernate JPA Configuration Example</description>
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:tmall;DB_CLOSE_DELAY=-1"/>
@@ -18,7 +17,5 @@
             <property name="hibernate.hbm2ddl.auto" value="update" />
             <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
         </properties>
-
     </persistence-unit>
-
 </persistence>
