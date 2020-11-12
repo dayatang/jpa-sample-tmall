@@ -14,12 +14,12 @@ public class OrderLine extends BaseEntity {
     @ManyToOne
     private Product product;
 
-    private BigDecimal quantity;
+    private BigDecimal quantity = BigDecimal.ZERO;
 
     @AttributeOverride(name = "amount", column = @Column(name = "unit_price"))
     private Money unitPrice;
 
-    private BigDecimal discountRate;
+    private BigDecimal discountRate = BigDecimal.ZERO;
 
     @AttributeOverride(name = "amount", column = @Column(name = "sub_total"))
     private Money subTotal;
@@ -49,6 +49,7 @@ public class OrderLine extends BaseEntity {
 
     public void setQuantity(BigDecimal quantity) {
         this.quantity = quantity;
+        calculateSubTotal();
     }
 
     public Money getUnitPrice() {
@@ -57,6 +58,7 @@ public class OrderLine extends BaseEntity {
 
     public void setUnitPrice(Money unitPrice) {
         this.unitPrice = unitPrice;
+        calculateSubTotal();
     }
 
     public BigDecimal getDiscountRate() {
@@ -65,6 +67,7 @@ public class OrderLine extends BaseEntity {
 
     public void setDiscountRate(BigDecimal discountRate) {
         this.discountRate = discountRate;
+        calculateSubTotal();
     }
 
     public Money getSubTotal() {
@@ -75,7 +78,7 @@ public class OrderLine extends BaseEntity {
         this.subTotal = subTotal;
     }
 
-    public Money calculateSubTotal() {
+    private Money calculateSubTotal() {
         Money base = unitPrice.multiply(quantity);
         Money discountMoney = base.multiply(discountRate).divide(100);
         this.subTotal = base.subtract(discountMoney);

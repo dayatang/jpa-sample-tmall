@@ -31,6 +31,10 @@ public class Money {
     }
 
     public Money(BigDecimal amount) {
+        if (amount == null) {
+            this.amount = BigDecimal.ZERO;
+            return;
+        }
         this.amount = amount;
     }
 
@@ -55,6 +59,9 @@ public class Money {
     }
 
     public Money multiply(BigDecimal amount) {
+        if (amount == null) {
+            return Money.ZERO;
+        }
         return new Money(this.amount.multiply(amount));
     }
 

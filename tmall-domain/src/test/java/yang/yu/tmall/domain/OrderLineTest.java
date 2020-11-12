@@ -14,7 +14,6 @@ class OrderLineTest extends BaseUnitTest {
         orderLine.setUnitPrice(Money.valueOf(150));
         orderLine.setQuantity(new BigDecimal(3));
         orderLine.setDiscountRate(new BigDecimal(30));
-        orderLine.calculateSubTotal();
         assertThat(orderLine.getSubTotal()).isEqualTo(Money.valueOf(150 * 3 * (100 - 30) / 100));
     }
 }

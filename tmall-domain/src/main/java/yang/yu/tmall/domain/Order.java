@@ -49,16 +49,19 @@ public class Order extends BaseEntity {
 
     public void setLineItems(Set<OrderLine> lineItems) {
         this.lineItems = new HashSet<>(lineItems);
+        calculateTotalPrice();
     }
 
     public void addLineItem(OrderLine lineItem) {
         lineItem.setOrder(this);
         lineItems.add(lineItem);
+        calculateTotalPrice();
     }
 
     public void removeLineItem(OrderLine lineItem) {
         lineItem.setOrder(null);
         lineItems.remove(lineItem);
+        calculateTotalPrice();
     }
 
     public Buyer getBuyer() {
@@ -93,9 +96,10 @@ public class Order extends BaseEntity {
         this.status = status;
     }
 
-    public Money calculateTotalPrice() {
+    private Money calculateTotalPrice() {
         this.totalPrice = lineItems.stream()
-                .map(OrderLine::calculateSubTotal)
+                .map(OrderLine::getSubTotal)
+                .peek(System.out::println)
                 .reduce(Money.ZERO, Money::add);
         return this.totalPrice;
     }
