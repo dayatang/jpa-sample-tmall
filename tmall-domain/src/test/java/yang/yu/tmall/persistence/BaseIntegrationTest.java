@@ -1,24 +1,23 @@
-package yang.yu.tmall.domain;
+package yang.yu.tmall.persistence;
 
-import org.junit.jupiter.api.*;
-import yang.yu.tmall.persistence.BaseIntegrationTest;
+import org.assertj.core.api.WithAssertions;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
-class BuyerRepositoryTest extends BaseIntegrationTest {
+public abstract class BaseIntegrationTest implements WithAssertions {
 
     private static EntityManagerFactory emf;
 
-    private EntityManager entityManager;
+    protected EntityManager entityManager;
 
-    private EntityTransaction transaction;
-
-    private Buyer buyer1;
-
-    private Buyer buyer2;
+    protected EntityTransaction transaction;
 
     @BeforeAll
     static void beforeAll() {
@@ -43,14 +42,15 @@ class BuyerRepositoryTest extends BaseIntegrationTest {
         emf.close();
     }
 
-    @Test
-    void create() {
-        buyer1 = new Buyer("buyer1");
-        buyer2 = new Buyer("buyer2");
-        entityManager.persist(buyer1);
-        entityManager.persist(buyer2);
-        assertThat(buyer1.getId()).isGreaterThan(0);
-        assertThat(buyer2.getId()).isGreaterThan(0);
+    public static EntityManagerFactory getEmf() {
+        return emf;
     }
 
+    public EntityManager getEntityManager() {
+        return entityManager;
+    }
+
+    public EntityTransaction getTransaction() {
+        return transaction;
+    }
 }
