@@ -14,8 +14,7 @@ public class Order extends BaseEntity {
 
     private LocalDateTime createdOn = LocalDateTime.now();
 
-    @ElementCollection
-    @CollectionTable(name = "order_lines")
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<OrderLine> lineItems = new HashSet<>();
 
     @ManyToOne
@@ -23,6 +22,7 @@ public class Order extends BaseEntity {
 
     private Address shippingAddress;
 
+    @AttributeOverride(name = "amount", column = @Column(name = "total_price"))
     private Money totalPrice;
 
     private OrderStatus status = OrderStatus.PENDING;
@@ -49,6 +49,16 @@ public class Order extends BaseEntity {
 
     public void setLineItems(Set<OrderLine> lineItems) {
         this.lineItems = new HashSet<>(lineItems);
+    }
+
+    public void addLineItem(OrderLine lineItem) {
+        lineItem.setOrder(this);
+        lineItems.add(lineItem);
+    }
+
+    public void removeLineItem(OrderLine lineItem) {
+        lineItem.setOrder(null);
+        lineItems.remove(lineItem);
     }
 
     public Buyer getBuyer() {

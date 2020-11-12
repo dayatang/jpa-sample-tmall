@@ -1,23 +1,39 @@
 package yang.yu.tmall.domain;
 
-import javax.persistence.Embeddable;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-@Embeddable
-public class OrderLine {
+@Entity
+@Table(name = "order_lines")
+public class OrderLine extends BaseEntity {
+
+    @ManyToOne
+    private Order order;
 
     @ManyToOne
     private Product product;
 
     private BigDecimal quantity;
 
+    @AttributeOverride(name = "amount", column = @Column(name = "unit_price"))
     private Money unitPrice;
 
     private BigDecimal discountRate;
 
+    @AttributeOverride(name = "amount", column = @Column(name = "sub_total"))
     private Money subTotal;
+
+    public OrderLine() {
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
 
     public Product getProduct() {
         return product;
