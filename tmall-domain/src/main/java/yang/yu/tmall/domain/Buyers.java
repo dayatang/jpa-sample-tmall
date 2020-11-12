@@ -1,6 +1,7 @@
 package yang.yu.tmall.domain;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface Buyers {
 
@@ -8,9 +9,9 @@ public interface Buyers {
 
     void remove(Buyer buyer);
 
-    Buyer getBuyId(int id);
+    Optional<Buyer> findById(int id);
 
-    Buyer getByName(String name);
+    Optional<Buyer> findByName(String name);
 
     List<Buyer> findByNameContains(String nameFragment);
 }

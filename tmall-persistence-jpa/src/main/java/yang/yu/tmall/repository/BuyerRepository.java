@@ -5,6 +5,7 @@ import yang.yu.tmall.domain.Buyers;
 
 import javax.persistence.EntityManager;
 import java.util.List;
+import java.util.Optional;
 
 public class BuyerRepository implements Buyers {
 
@@ -25,16 +26,17 @@ public class BuyerRepository implements Buyers {
     }
 
     @Override
-    public Buyer getBuyId(int id) {
-        return entityManager.find(Buyer.class, id);
+    public Optional<Buyer> findById(int id) {
+        return Optional.ofNullable(entityManager.find(Buyer.class, id));
     }
 
     @Override
-    public Buyer getByName(String name) {
-        return (Buyer) entityManager
+    public Optional<Buyer> findByName(String name) {
+        Buyer buyer = (Buyer) entityManager
                 .createQuery("select o from Buyer o where o.name = :name")
                 .setParameter("name", name)
                 .getSingleResult();
+        return Optional.ofNullable(buyer);
     }
 
     @Override
