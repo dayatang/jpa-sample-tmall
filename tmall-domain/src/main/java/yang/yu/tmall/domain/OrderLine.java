@@ -75,8 +75,11 @@ public class OrderLine extends BaseEntity {
         this.subTotal = subTotal;
     }
 
-    public void calculateSubTotal() {
-        this.subTotal = unitPrice.multiply(quantity).multiply(discountRate).divide(100);
+    public Money calculateSubTotal() {
+        Money base = unitPrice.multiply(quantity);
+        Money discountMoney = base.multiply(discountRate).divide(100);
+        this.subTotal = base.subtract(discountMoney);
+        return this.subTotal;
     }
 
 

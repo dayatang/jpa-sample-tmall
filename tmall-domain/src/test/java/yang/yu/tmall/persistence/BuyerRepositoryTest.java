@@ -1,6 +1,7 @@
-package yang.yu.tmall.domain;
+package yang.yu.tmall.persistence;
 
 import org.junit.jupiter.api.*;
+import yang.yu.tmall.domain.Buyer;
 import yang.yu.tmall.persistence.BaseIntegrationTest;
 
 import javax.persistence.EntityManager;

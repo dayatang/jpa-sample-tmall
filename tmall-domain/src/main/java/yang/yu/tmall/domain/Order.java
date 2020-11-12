@@ -93,10 +93,11 @@ public class Order extends BaseEntity {
         this.status = status;
     }
 
-    public void calculateTotalPrice() {
+    public Money calculateTotalPrice() {
         this.totalPrice = lineItems.stream()
-                .map(OrderLine::getSubTotal)
+                .map(OrderLine::calculateSubTotal)
                 .reduce(Money.ZERO, Money::add);
+        return this.totalPrice;
     }
 
     @Override
