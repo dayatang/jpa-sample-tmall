@@ -1,5 +1,6 @@
 package yang.yu.tmall.domain;
 
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Version;
@@ -9,6 +10,7 @@ import java.io.Serializable;
 public abstract class BaseEntity implements Serializable {
 
     @Id
+    @GeneratedValue
     private int id;
 
     @Version

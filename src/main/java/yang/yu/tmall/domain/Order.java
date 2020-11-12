@@ -24,6 +24,6 @@ public class Order extends BaseEntity {
     @CollectionTable(name = "order_lines", joinColumns = @JoinColumn(name = "order_id"))
     private List<OrderLine> lineItems = new ArrayList<>();
 
-    @ManyToMany
+    @ManyToOne
     private Buyer buyer;
 }
