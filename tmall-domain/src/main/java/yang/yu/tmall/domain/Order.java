@@ -25,6 +25,7 @@ public class Order extends BaseEntity {
     @AttributeOverride(name = "amount", column = @Column(name = "total_price"))
     private Money totalPrice;
 
+    @Enumerated(EnumType.STRING)
     private OrderStatus status = OrderStatus.PENDING;
 
     public String getOrderNo() {

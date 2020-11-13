@@ -2,6 +2,8 @@ package yang.yu.tmall.repository;
 
 import org.junit.jupiter.api.*;
 import yang.yu.tmall.domain.Buyer;
+import yang.yu.tmall.domain.OrgBuyer;
+import yang.yu.tmall.domain.PersonalBuyer;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -25,10 +27,8 @@ class BuyerRepositoryTest extends BaseIntegrationTest {
 
     @Test
     void create() {
-        buyer1 = new Buyer("buyer1");
-        buyer2 = new Buyer("buyer2");
-        buyer1 = repository.save(new Buyer("buyer1"));
-        buyer2 = repository.save(new Buyer("buyer2"));
+        buyer1 = repository.save(new PersonalBuyer("张三"));
+        buyer2 = repository.save(new OrgBuyer("华为公司"));
         assertThat(buyer1.getId()).isGreaterThan(0);
         assertThat(buyer2.getId()).isGreaterThan(0);
     }

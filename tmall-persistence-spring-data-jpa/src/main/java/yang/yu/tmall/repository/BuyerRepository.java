@@ -15,5 +15,4 @@ public interface BuyerRepository extends Buyers, CrudRepository<Buyer, Integer> 
         delete(buyer);
     }
 
-    Optional<Buyer> findByNameContaining()
 }

@@ -7,13 +7,18 @@ import java.util.Set;
 
 @Entity
 @Table(name = "buyers")
-public class Buyer extends BaseEntity {
+@DiscriminatorColumn(discriminatorType = DiscriminatorType.STRING)
+public abstract class Buyer extends BaseEntity {
 
     @Basic(optional = false)
     @Column(nullable = false, unique = true)
     private String name;
 
-    private String phoneNumber;
+    private String mobileNo;
+
+    private String wiredNo;
+
+    private String email;
 
     @ElementCollection
     @CollectionTable(name = "shipping_addresses")
@@ -34,12 +39,28 @@ public class Buyer extends BaseEntity {
         this.name = name;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getMobileNo() {
+        return mobileNo;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setMobileNo(String mobileNo) {
+        this.mobileNo = mobileNo;
+    }
+
+    public String getWiredNo() {
+        return wiredNo;
+    }
+
+    public void setWiredNo(String wiredNo) {
+        this.wiredNo = wiredNo;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Set<Address> getShippingAddresses() {
