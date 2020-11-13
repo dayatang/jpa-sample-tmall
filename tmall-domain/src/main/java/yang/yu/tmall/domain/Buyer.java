@@ -7,6 +7,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "buyers")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(discriminatorType = DiscriminatorType.STRING)
 public abstract class Buyer extends BaseEntity {
 
