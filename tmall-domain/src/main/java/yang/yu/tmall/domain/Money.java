@@ -8,6 +8,8 @@ import java.util.Objects;
 @Embeddable
 public class Money {
 
+    private static final int SCALE = 2;
+
     public static final Money ZERO = Money.valueOf(0);
 
     private BigDecimal value = BigDecimal.ZERO;
@@ -36,7 +38,7 @@ public class Money {
             this.value = BigDecimal.ZERO;
             return;
         }
-        this.value = amount.setScale(2, RoundingMode.HALF_UP);
+        this.value = amount.setScale(SCALE, RoundingMode.HALF_UP);
     }
 
     public static Object valueOf(String value) {
@@ -105,6 +107,6 @@ public class Money {
 
     @Override
     public String toString() {
-        return value.setScale(2, RoundingMode.HALF_UP).toString();
+        return value.toString();
     }
 }
