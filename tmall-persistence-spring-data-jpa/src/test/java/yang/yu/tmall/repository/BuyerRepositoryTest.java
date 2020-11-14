@@ -1,16 +1,18 @@
-package yang.yu.tmall.domain;
+package yang.yu.tmall.repository;
 
 import org.assertj.core.api.WithAssertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
+import yang.yu.tmall.domain.Buyer;
+import yang.yu.tmall.domain.Buyers;
+import yang.yu.tmall.domain.OrgBuyer;
+import yang.yu.tmall.domain.PersonalBuyer;
 import yang.yu.tmall.spring.JpaSpringConfig;
 
 import javax.inject.Inject;
 import javax.transaction.Transactional;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @SpringJUnitConfig(classes = JpaSpringConfig.class)
 @Transactional
