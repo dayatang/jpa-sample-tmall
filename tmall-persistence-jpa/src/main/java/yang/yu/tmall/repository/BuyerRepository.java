@@ -6,6 +6,7 @@ import yang.yu.tmall.domain.Buyers;
 import javax.persistence.EntityManager;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 public class BuyerRepository implements Buyers {
 
@@ -21,8 +22,18 @@ public class BuyerRepository implements Buyers {
     }
 
     @Override
-    public void remove(Buyer buyer) {
+    public void delete(Buyer buyer) {
         entityManager.remove(buyer);
+    }
+
+    @Override
+    public List<Buyer> findAll() {
+        return entityManager.createQuery("select o from Buyer o").getResultList();
+    }
+
+    @Override
+    public void deleteAll() {
+        entityManager.createQuery("DELETE FROM Buyer").executeUpdate();
     }
 
     @Override
@@ -40,10 +51,20 @@ public class BuyerRepository implements Buyers {
     }
 
     @Override
-    public List<Buyer> findByNameContains(String nameFragment) {
+    public Stream<Buyer> findByNameStartsWith(String nameFragment) {
+        return entityManager
+                .createQuery("select o from Buyer o where o.name Like :name")
+                .setParameter("name", nameFragment + "%")
+                .getResultList()
+                .stream();
+    }
+
+    @Override
+    public Stream<Buyer> findByNameContains(String nameFragment) {
         return entityManager
                 .createQuery("select o from Buyer o where o.name Like :name")
                 .setParameter("name", "%" + nameFragment + "%")
-                .getResultList();
+                .getResultList()
+                .stream();
     }
 }

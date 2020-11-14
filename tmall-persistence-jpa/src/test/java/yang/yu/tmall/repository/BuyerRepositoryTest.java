@@ -1,14 +1,10 @@
 package yang.yu.tmall.repository;
 
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import yang.yu.tmall.domain.Buyer;
 import yang.yu.tmall.domain.OrgBuyer;
 import yang.yu.tmall.domain.PersonalBuyer;
-
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
 
 class BuyerRepositoryTest extends BaseIntegrationTest {
 
@@ -24,6 +20,7 @@ class BuyerRepositoryTest extends BaseIntegrationTest {
         getEntityManager().getClass();
         repository = new BuyerRepository(getEntityManager());
     }
+
 
     @Test
     void create() {
