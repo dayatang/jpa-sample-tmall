@@ -2,6 +2,7 @@ package yang.yu.tmall.domain;
 
 import javax.persistence.Embeddable;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Objects;
 
 @Embeddable
@@ -9,7 +10,7 @@ public class Money {
 
     public static final Money ZERO = Money.valueOf(0);
 
-    private BigDecimal amount = BigDecimal.ZERO;
+    private BigDecimal value = BigDecimal.ZERO;
 
     public static Money valueOf(BigDecimal amount) {
         return new Money(amount);
@@ -32,49 +33,53 @@ public class Money {
 
     public Money(BigDecimal amount) {
         if (amount == null) {
-            this.amount = BigDecimal.ZERO;
+            this.value = BigDecimal.ZERO;
             return;
         }
-        this.amount = amount;
+        this.value = amount;
     }
 
-    public BigDecimal getAmount() {
-        return amount;
+    public BigDecimal getValue() {
+        return value;
+    }
+
+    private void setValue(BigDecimal value) {
+        this.value = value;
     }
 
     public Money add(Money amount) {
-        return new Money(this.amount.add(amount.amount));
+        return new Money(this.value.add(amount.value));
     }
 
     public Money subtract(Money amount) {
-        return new Money(this.amount.subtract(amount.amount));
+        return new Money(this.value.subtract(amount.value));
     }
 
     public Money multiply(int amount) {
-        return new Money(this.amount.multiply(new BigDecimal(amount)));
+        return new Money(this.value.multiply(new BigDecimal(amount)));
     }
 
     public Money multiply(long amount) {
-        return new Money(this.amount.multiply(new BigDecimal(amount)));
+        return new Money(this.value.multiply(new BigDecimal(amount)));
     }
 
     public Money multiply(BigDecimal amount) {
         if (amount == null) {
             return Money.ZERO;
         }
-        return new Money(this.amount.multiply(amount));
+        return new Money(this.value.multiply(amount));
     }
 
     public Money multiply(double amount) {
-        return new Money(this.amount.multiply(new BigDecimal(amount)));
+        return new Money(this.value.multiply(new BigDecimal(amount)));
     }
 
     public Money divide(int amount) {
-        return new Money(this.amount.divide(new BigDecimal(amount)));
+        return new Money(this.value.divide(new BigDecimal(amount)));
     }
 
     public Money divide(long amount) {
-        return new Money(this.amount.divide(new BigDecimal(amount)));
+        return new Money(this.value.divide(new BigDecimal(amount)));
     }
 
     @Override
@@ -86,16 +91,16 @@ public class Money {
             return false;
         }
         Money money = (Money) o;
-        return amount.equals(money.amount);
+        return value.equals(money.value);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(amount);
+        return Objects.hash(value);
     }
 
     @Override
     public String toString() {
-        return amount.toString();
+        return value.setScale(2, RoundingMode.HALF_UP).toString();
     }
 }

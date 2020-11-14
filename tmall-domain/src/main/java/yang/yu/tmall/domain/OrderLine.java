@@ -16,12 +16,12 @@ public class OrderLine extends BaseEntity {
 
     private BigDecimal quantity = BigDecimal.ZERO;
 
-    @AttributeOverride(name = "amount", column = @Column(name = "unit_price"))
+    @AttributeOverride(name = "value", column = @Column(name = "unit_price"))
     private Money unitPrice;
 
     private BigDecimal discountRate = BigDecimal.ZERO;
 
-    @AttributeOverride(name = "amount", column = @Column(name = "sub_total"))
+    @AttributeOverride(name = "value", column = @Column(name = "sub_total"))
     private Money subTotal;
 
     public OrderLine() {

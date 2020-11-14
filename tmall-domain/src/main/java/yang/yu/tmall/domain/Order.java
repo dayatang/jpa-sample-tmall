@@ -22,7 +22,7 @@ public class Order extends BaseEntity {
 
     private Address shippingAddress;
 
-    @AttributeOverride(name = "amount", column = @Column(name = "total_price"))
+    @AttributeOverride(name = "value", column = @Column(name = "total_price"))
     private Money totalPrice;
 
     @Enumerated(EnumType.STRING)

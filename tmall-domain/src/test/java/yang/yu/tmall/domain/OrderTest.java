@@ -5,8 +5,6 @@ import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class OrderTest extends BaseUnitTest {
 
     @Test
@@ -30,7 +28,7 @@ class OrderTest extends BaseUnitTest {
         //System.out.println(subtotal1);
         double subtotal2 = 25.4 * 3.2;
         //System.out.println(subtotal2);
-        assertThat(order.getTotalPrice().getAmount().doubleValue())
+        assertThat(order.getTotalPrice().getValue().doubleValue())
                 .isCloseTo(subtotal1 + subtotal2, Percentage.withPercentage(0.00001));
    }
 }
