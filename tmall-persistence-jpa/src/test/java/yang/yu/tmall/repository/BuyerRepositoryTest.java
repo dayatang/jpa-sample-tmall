@@ -1,5 +1,6 @@
 package yang.yu.tmall.repository;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import yang.yu.tmall.domain.Buyer;
@@ -8,6 +9,10 @@ import yang.yu.tmall.domain.OrgBuyer;
 import yang.yu.tmall.domain.PersonalBuyer;
 
 class BuyerRepositoryTest extends BaseIntegrationTest {
+
+    private static final String buyer1Name = "张三";
+
+    private static final String buyer2Name = "华为公司";
 
     private Buyers buyers;
 
@@ -18,15 +23,51 @@ class BuyerRepositoryTest extends BaseIntegrationTest {
     @BeforeEach
     void beforeEach() {
         buyers = new BuyerRepository(getEntityManager());
+        buyer1 = buyers.save(new PersonalBuyer(buyer1Name));
+        buyer2 = buyers.save(new OrgBuyer(buyer2Name));
     }
 
+    @AfterEach
+    void afterEach() {
+        buyers.deleteAll();
+    }
 
     @Test
-    void create() {
-        buyer1 = buyers.save(new PersonalBuyer("张三"));
-        buyer2 = buyers.save(new OrgBuyer("华为公司"));
-        assertThat(buyer1.getId()).isGreaterThan(0);
-        assertThat(buyer2.getId()).isGreaterThan(0);
+    void findById() {
+        assertThat(buyers.findById(buyer1.getId()).get()).isEqualTo(buyer1);
+        assertThat(buyers.findById(buyer2.getId()).get()).isEqualTo(buyer2);
+    }
+
+    @Test
+    void findByName() {
+        assertThat(buyers.findByName(buyer1Name).get()).isEqualTo(buyer1);
+        assertThat(buyers.findByName(buyer2Name).get()).isEqualTo(buyer2);
+    }
+
+    @Test
+    void findByNameContains() {
+        assertThat(buyers.findByNameContains("三"))
+                .contains(buyer1)
+                .doesNotContain(buyer2);
+    }
+
+    @Test
+    void findAll() {
+        assertThat(buyers.findAll()).contains(buyer1, buyer2);
+    }
+
+    @Test
+    void delete() {
+        buyers.delete(buyer1);
+        assertThat(buyers.findAll()).contains(buyer2).doesNotContain(buyer1);
+    }
+
+    @Test
+    void update() {
+        buyer1.setName("李四");
+        buyers.save(buyer1);
+        assertThat(buyers.findById(buyer1.getId()).get().getName()).isEqualTo("李四");
+        assertThat(buyers.findById(buyer2.getId()).get().getName()).isEqualTo(buyer2Name);
     }
 
 }

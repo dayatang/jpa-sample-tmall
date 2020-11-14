@@ -69,4 +69,12 @@ class BuyerRepositoryTest implements WithAssertions {
         buyers.delete(buyer1);
         assertThat(buyers.findAll()).contains(buyer2).doesNotContain(buyer1);
     }
+
+    @Test
+    void update() {
+        buyer1.setName("李四");
+        buyers.save(buyer1);
+        assertThat(buyers.findById(buyer1.getId()).get().getName()).isEqualTo("李四");
+        assertThat(buyers.findById(buyer2.getId()).get().getName()).isEqualTo(buyer2Name);
+    }
 }
