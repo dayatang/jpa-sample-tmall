@@ -36,7 +36,11 @@ public class Money {
             this.value = BigDecimal.ZERO;
             return;
         }
-        this.value = amount;
+        this.value = amount.setScale(2, RoundingMode.HALF_UP);
+    }
+
+    public static Object valueOf(String value) {
+        return new Money(new BigDecimal(value));
     }
 
     public BigDecimal getValue() {
