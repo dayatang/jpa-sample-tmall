@@ -32,7 +32,7 @@ public class JpaSpringConfig {
     @Bean
     public JpaVendorAdapter jpaVendorAdapter() {
         HibernateJpaVendorAdapter result = new HibernateJpaVendorAdapter();
-        result.setDatabase(Database.MYSQL);
+        result.setDatabase(Database.H2);
         result.setDatabasePlatform("org.hibernate.dialect.H2Dialect");
         result.setGenerateDdl(true);
         result.setShowSql(true);
