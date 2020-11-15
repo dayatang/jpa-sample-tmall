@@ -6,7 +6,7 @@ import java.util.stream.Stream;
 
 public interface Buyers {
 
-    Buyer save(Buyer buyer);
+    <T extends Buyer> T save(T buyer);
 
     void delete(Buyer buyer);
 
@@ -21,5 +21,7 @@ public interface Buyers {
     Stream<Buyer> findByNameStartsWith(String nameFragment);
 
     Stream<Buyer> findByNameContains(String nameFragment);
+
+    Optional<PersonalBuyer> findPersonalBuyerByQQ(String qq);
 
 }

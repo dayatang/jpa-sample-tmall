@@ -7,6 +7,6 @@ import yang.yu.tmall.domain.Buyers;
 import javax.inject.Named;
 
 @Named
-public interface BuyerRepository extends Buyers, JpaRepository<Buyer, Integer> {
+public interface BuyerRepository extends Buyers, JpaRepository<Buyer, Integer>, BuyerOperations  {
 
 }

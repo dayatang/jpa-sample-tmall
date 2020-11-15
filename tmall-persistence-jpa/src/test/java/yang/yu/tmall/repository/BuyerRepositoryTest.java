@@ -3,10 +3,7 @@ package yang.yu.tmall.repository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import yang.yu.tmall.domain.Buyer;
-import yang.yu.tmall.domain.Buyers;
-import yang.yu.tmall.domain.OrgBuyer;
-import yang.yu.tmall.domain.PersonalBuyer;
+import yang.yu.tmall.domain.*;
 
 class BuyerRepositoryTest extends BaseIntegrationTest {
 
@@ -16,9 +13,9 @@ class BuyerRepositoryTest extends BaseIntegrationTest {
 
     private Buyers buyers;
 
-    private Buyer buyer1;
+    private PersonalBuyer buyer1;
 
-    private Buyer buyer2;
+    private OrgBuyer buyer2;
 
     @BeforeEach
     void beforeEach() {
@@ -29,7 +26,7 @@ class BuyerRepositoryTest extends BaseIntegrationTest {
 
     @AfterEach
     void afterEach() {
-        buyers.deleteAll();
+        buyers.findAll().forEach(buyers::delete);
     }
 
     @Test
@@ -42,6 +39,15 @@ class BuyerRepositoryTest extends BaseIntegrationTest {
     void findByName() {
         assertThat(buyers.findByName(buyer1Name).get()).isEqualTo(buyer1);
         assertThat(buyers.findByName(buyer2Name).get()).isEqualTo(buyer2);
+    }
+
+    @Test
+    void findByNameStartsWith() {
+        assertThat(buyers.findByNameStartsWith("华"))
+                .contains(buyer2)
+                .doesNotContain(buyer1);
+        assertThat(buyers.findByNameStartsWith("三"))
+                .isEmpty();
     }
 
     @Test
@@ -69,5 +75,13 @@ class BuyerRepositoryTest extends BaseIntegrationTest {
         assertThat(buyers.findById(buyer1.getId()).get().getName()).isEqualTo("李四");
         assertThat(buyers.findById(buyer2.getId()).get().getName()).isEqualTo(buyer2Name);
     }
+
+    @Test
+    void findPersonalBuyerByQQ() {
+        buyer1.setImInfo(ImType.QQ, "34567");
+        buyers.save(buyer1);
+        assertThat(buyers.findPersonalBuyerByQQ("34567").get()).isEqualTo(buyer1);
+    }
+
 
 }

@@ -14,6 +14,8 @@ public class PersonalBuyer extends Buyer {
     @ElementCollection
     @CollectionTable(name = "contact_infos")
     @MapKeyEnumerated(EnumType.STRING)
+    @MapKeyColumn(name = "im_type")
+    @Column(name = "im_value")
     private Map<ImType, String> imInfos = new HashMap<>();
 
     public PersonalBuyer() {

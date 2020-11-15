@@ -5,10 +5,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
-import yang.yu.tmall.domain.Buyer;
-import yang.yu.tmall.domain.Buyers;
-import yang.yu.tmall.domain.OrgBuyer;
-import yang.yu.tmall.domain.PersonalBuyer;
+import yang.yu.tmall.domain.*;
 import yang.yu.tmall.spring.JpaSpringConfig;
 
 import javax.inject.Inject;
@@ -25,9 +22,9 @@ class BuyerRepositoryTest implements WithAssertions {
     @Inject
     private Buyers buyers;
 
-    private Buyer buyer1;
+    private PersonalBuyer buyer1;
 
-    private Buyer buyer2;
+    private OrgBuyer buyer2;
 
     @BeforeEach
     void beforeEach() {
@@ -37,7 +34,7 @@ class BuyerRepositoryTest implements WithAssertions {
 
     @AfterEach
     void afterEach() {
-        buyers.deleteAll();
+        buyers.findAll().forEach(buyers::delete);
     }
 
     @Test
@@ -53,6 +50,15 @@ class BuyerRepositoryTest implements WithAssertions {
     }
 
     @Test
+    void findByNameStartsWith() {
+        assertThat(buyers.findByNameStartsWith("华"))
+                .contains(buyer2)
+                .doesNotContain(buyer1);
+        assertThat(buyers.findByNameStartsWith("三"))
+                .isEmpty();
+    }
+
+    @Test
     void findByNameContains() {
         assertThat(buyers.findByNameContains("三"))
                 .contains(buyer1)
@@ -62,6 +68,13 @@ class BuyerRepositoryTest implements WithAssertions {
     @Test
     void findAll() {
         assertThat(buyers.findAll()).contains(buyer1, buyer2);
+    }
+
+    @Test
+    void findPersonalBuyerByQQ() {
+        buyer1.setImInfo(ImType.QQ, "34567");
+        buyers.save(buyer1);
+        assertThat(buyers.findPersonalBuyerByQQ("34567").get()).isEqualTo(buyer1);
     }
 
     @Test
