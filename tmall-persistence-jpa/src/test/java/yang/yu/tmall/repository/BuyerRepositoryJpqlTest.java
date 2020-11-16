@@ -5,7 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import yang.yu.tmall.domain.*;
 
-class BuyerRepositoryTest extends BaseIntegrationTest {
+class BuyerRepositoryJpqlTest extends BaseIntegrationTest {
 
     private static final String buyer1Name = "张三";
 
@@ -19,7 +19,7 @@ class BuyerRepositoryTest extends BaseIntegrationTest {
 
     @BeforeEach
     void beforeEach() {
-        buyers = new BuyerRepository(getEntityManager());
+        buyers = new BuyerRepositoryJpql(getEntityManager());
         buyer1 = buyers.save(new PersonalBuyer(buyer1Name));
         buyer2 = buyers.save(new OrgBuyer(buyer2Name));
     }

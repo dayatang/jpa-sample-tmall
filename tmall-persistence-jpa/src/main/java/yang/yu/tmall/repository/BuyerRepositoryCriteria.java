@@ -6,15 +6,16 @@ import yang.yu.tmall.domain.ImType;
 import yang.yu.tmall.domain.PersonalBuyer;
 
 import javax.persistence.EntityManager;
+import javax.persistence.criteria.*;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
 
-public class BuyerRepository implements Buyers {
+public class BuyerRepositoryCriteria implements Buyers {
 
     private final EntityManager entityManager;
 
-    public BuyerRepository(EntityManager entityManager) {
+    public BuyerRepositoryCriteria(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
 
@@ -30,12 +31,15 @@ public class BuyerRepository implements Buyers {
 
     @Override
     public List<Buyer> findAll() {
-        return entityManager.createQuery("select o from Buyer o").getResultList();
+        CriteriaQuery<Buyer> query = createCriteriaQuery(Buyer.class);
+        Root<Buyer> root = query.from(Buyer.class);
+        return entityManager.createQuery(query.select(root)).getResultList();
     }
 
     @Override
     public void deleteAll() {
-        entityManager.createQuery("DELETE FROM Buyer").executeUpdate();
+        CriteriaDelete<Buyer> criteriaDelete = entityManager.getCriteriaBuilder().createCriteriaDelete(Buyer.class);
+        entityManager.createQuery(criteriaDelete).executeUpdate();
     }
 
     @Override
@@ -45,26 +49,32 @@ public class BuyerRepository implements Buyers {
 
     @Override
     public Optional<Buyer> findByName(String name) {
+        CriteriaQuery<Buyer> query = createCriteriaQuery(Buyer.class);
+        Root<Buyer> root = query.from(Buyer.class);
+        Predicate predicate = getCriteriaBuilder().equal(root.get("name"), name);
         return entityManager
-                .createQuery("select o from Buyer o where o.name = :name", Buyer.class)
-                .setParameter("name", name)
+                .createQuery(query.select(root).where(predicate))
                 .getResultStream()
                 .findAny();
     }
 
     @Override
     public Stream<Buyer> findByNameStartsWith(String nameFragment) {
+        CriteriaQuery<Buyer> query = createCriteriaQuery(Buyer.class);
+        Root<Buyer> root = query.from(Buyer.class);
+        Predicate predicate = getCriteriaBuilder().like(root.get("name"), nameFragment + "%");
         return entityManager
-                .createQuery("select o from Buyer o where o.name Like :name", Buyer.class)
-                .setParameter("name", nameFragment + "%")
+                .createQuery(query.select(root).where(predicate))
                 .getResultStream();
     }
 
     @Override
     public Stream<Buyer> findByNameContains(String nameFragment) {
+        CriteriaQuery<Buyer> query = createCriteriaQuery(Buyer.class);
+        Root<Buyer> root = query.from(Buyer.class);
+        Predicate predicate = getCriteriaBuilder().like(root.get("name"), "%" + nameFragment + "%");
         return entityManager
-                .createQuery("select o from Buyer o where o.name Like :name", Buyer.class)
-                .setParameter("name", "%" + nameFragment + "%")
+                .createQuery(query.select(root).where(predicate))
                 .getResultStream();
     }
 
@@ -76,5 +86,13 @@ public class BuyerRepository implements Buyers {
                 .setParameter("value", qq)
                 .getResultStream()
                 .findAny();
+    }
+
+    private CriteriaBuilder getCriteriaBuilder() {
+        return entityManager.getCriteriaBuilder();
+    }
+
+    private <T extends Buyer> CriteriaQuery<T> createCriteriaQuery(Class<T> resultClass) {
+        return getCriteriaBuilder().createQuery(resultClass);
     }
 }
