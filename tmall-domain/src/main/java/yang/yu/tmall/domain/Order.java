@@ -10,8 +10,6 @@ public class Order extends BaseEntity {
 
     private String orderNo;
 
-    private LocalDateTime createdOn = LocalDateTime.now();
-
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     @OrderColumn(name = "seq_no")
     private List<OrderLine> lineItems = new ArrayList<>();
@@ -33,14 +31,6 @@ public class Order extends BaseEntity {
 
     public void setOrderNo(String orderNo) {
         this.orderNo = orderNo;
-    }
-
-    public LocalDateTime getCreatedOn() {
-        return createdOn;
-    }
-
-    public void setCreatedOn(LocalDateTime createdOn) {
-        this.createdOn = createdOn;
     }
 
     public List<OrderLine> getLineItems() {
