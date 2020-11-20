@@ -32,8 +32,7 @@ public class BuyerRepositoryCriteria implements Buyers {
     @Override
     public List<Buyer> findAll() {
         CriteriaQuery<Buyer> query = createCriteriaQuery(Buyer.class);
-        Root<Buyer> root = query.from(Buyer.class);
-        return entityManager.createQuery(query.select(root)).getResultList();
+        return entityManager.createQuery(query.select(query.from(Buyer.class))).getResultList();
     }
 
     @Override
