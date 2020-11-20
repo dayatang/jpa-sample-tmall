@@ -18,6 +18,7 @@ public class Order extends BaseEntity {
     @ManyToOne
     private Buyer buyer;
 
+    @Embedded
     private Address shippingAddress;
 
     @AttributeOverride(name = "value", column = @Column(name = "total_price"))

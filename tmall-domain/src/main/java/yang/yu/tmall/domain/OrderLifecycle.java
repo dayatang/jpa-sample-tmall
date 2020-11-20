@@ -1,44 +1,47 @@
 package yang.yu.tmall.domain;
 
-import javax.persistence.*;
+import yang.yu.lang.IoC;
 
-/**
- * 订单生命周期实体，记录某个时间点订单进入某个状态。
- */
-@Entity
-@Table(name = "order_lifecycles")
-public class OrderLifecycle extends BaseEntity {
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
-    @ManyToOne
+public class OrderLifecycle {
+
     private Order order;
 
-    @Enumerated(EnumType.STRING)
-    private OrderStatus status;
+    private OrderStatusTransitions transitions;
 
-    @Column(name = "seq_no")
-    private int seqNo;
-
-    public Order getOrder() {
-        return order;
-    }
-
-    public void setOrder(Order order) {
+    private OrderLifecycle(Order order) {
         this.order = order;
     }
 
-    public OrderStatus getStatus() {
-        return status;
+    public void setTransitions(OrderStatusTransitions transitions) {
+        this.transitions = transitions;
     }
 
-    public void setStatus(OrderStatus status) {
-        this.status = status;
+    private OrderStatusTransitions getTransitions() {
+        return Optional.ofNullable(transitions)
+                .orElse(IoC.getInstance(OrderStatusTransitions.class));
     }
 
-    public int getSeqNo() {
-        return seqNo;
+    public OrderStatusTransition getCurrentTransition() {
+        List<OrderStatusTransition> transitionList = getTransitionList();
+        return transitionList.get(transitionList.size() - 1);
     }
 
-    public void setSeqNo(int seqNo) {
-        this.seqNo = seqNo;
+    public OrderStatus getCurrentStatus() {
+        return getCurrentTransition().getStatus();
+    }
+
+    public List<OrderStatusTransition> getTransitionList() {
+        return getTransitions().findByOrder(order)
+                .sorted(Comparator.comparing(OrderStatusTransition::getSeqNo))
+                .collect(Collectors.toList());
+    }
+
+    public static OrderLifecycle of (Order order) {
+        return new OrderLifecycle(order);
     }
 }

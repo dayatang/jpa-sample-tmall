@@ -18,7 +18,7 @@ public class IoC {
      * @param beanType 实例的类型
      * @return 指定类型的实例。
      */
-    public <T> T getInstance(Class<T> beanType) {
+    public static <T> T getInstance(Class<T> beanType) {
         return provider.getInstance(beanType);
     }
 
@@ -31,7 +31,7 @@ public class IoC {
      * @param beanType 实例的类型
      * @return 指定类型的实例。
      */
-    public <T> T getInstance(Class<T> beanType, String beanName) {
+    public static <T> T getInstance(Class<T> beanType, String beanName) {
         return provider.getInstance(beanType, beanName);
     }
 
@@ -44,7 +44,7 @@ public class IoC {
      * @param annotationType 实现类的annotation类型
      * @return 指定类型的实例。
      */
-    public <T> T getInstance(Class<T> beanType, Class<? extends Annotation> annotationType) {
+    public static <T> T getInstance(Class<T> beanType, Class<? extends Annotation> annotationType) {
         return provider.getInstance(beanType, annotationType);
     }
 
@@ -54,7 +54,7 @@ public class IoC {
      * @param <T> 类型参数
      * @return 指定类型的实例的集合
      */
-    public <T> Set<T> getInstances(Class<T> beanType) {
+    public static <T> Set<T> getInstances(Class<T> beanType) {
         return provider.getInstances(beanType);
     }
 
