@@ -9,13 +9,13 @@
         <description> Hibernate JPA Configuration Example</description>
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <properties>
-            <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
-            <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:tmall;DB_CLOSE_DELAY=-1"/>
-            <property name="javax.persistence.jdbc.user" value="sa"/>
-            <property name="javax.persistence.jdbc.password" value=""/>
+            <property name="javax.persistence.jdbc.driver" value="${jdbc.driverClassName}"/>
+            <property name="javax.persistence.jdbc.url" value="${jdbc.url}"/>
+            <property name="javax.persistence.jdbc.user" value="${jdbc.username}"/>
+            <property name="javax.persistence.jdbc.password" value="${jdbc.password}"/>
             <property name="hibernate.show_sql" value="true" />
             <property name="hibernate.hbm2ddl.auto" value="update" />
-            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+            <property name="hibernate.dialect" value="${hibernate.dialect}"/>
         </properties>
     </persistence-unit>
 </persistence>

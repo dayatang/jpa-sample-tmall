@@ -2,9 +2,7 @@ package yang.yu.tmall.domain;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "orders")
@@ -15,7 +13,8 @@ public class Order extends BaseEntity {
     private LocalDateTime createdOn = LocalDateTime.now();
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<OrderLine> lineItems = new HashSet<>();
+    @OrderColumn(name = "seq_no")
+    private List<OrderLine> lineItems = new ArrayList<>();
 
     @ManyToOne
     private Buyer buyer;
@@ -44,12 +43,12 @@ public class Order extends BaseEntity {
         this.createdOn = createdOn;
     }
 
-    public Set<OrderLine> getLineItems() {
-        return new HashSet<>(lineItems);
+    public List<OrderLine> getLineItems() {
+        return new ArrayList<>(lineItems);
     }
 
-    public void setLineItems(Set<OrderLine> lineItems) {
-        this.lineItems = new HashSet<>(lineItems);
+    public void setLineItems(List<OrderLine> lineItems) {
+        this.lineItems = new ArrayList<>(lineItems);
         calculateTotalPrice();
     }
 

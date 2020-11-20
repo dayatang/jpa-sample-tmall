@@ -3,6 +3,8 @@ package yang.yu.tmall.spring;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
@@ -17,15 +19,22 @@ import javax.sql.DataSource;
 @Configuration
 @EnableJpaRepositories(basePackages = {"yang.yu.tmall.repository"})
 @EnableTransactionManagement
+@PropertySource("/jdbc.properties")
 public class JpaSpringConfig {
+
+    private Environment env;
+
+    public JpaSpringConfig(Environment env) {
+        this.env = env;
+    }
 
     @Bean(destroyMethod = "close")
     public ComboPooledDataSource dataSource() throws Exception {
         ComboPooledDataSource result = new ComboPooledDataSource();
-        result.setDriverClass("org.h2.Driver");
-        result.setJdbcUrl("jdbc:h2:mem:tmall;DB_CLOSE_DELAY=-1");
-        result.setUser("sa");
-        result.setPassword("");
+        result.setDriverClass(env.getProperty("jdbc.driverClassName"));
+        result.setJdbcUrl(env.getProperty("jdbc.url"));
+        result.setUser(env.getProperty("jdbc.username"));
+        result.setPassword(env.getProperty("jdbc.password", ""));
         return result;
     }
 
@@ -33,7 +42,7 @@ public class JpaSpringConfig {
     public JpaVendorAdapter jpaVendorAdapter() {
         HibernateJpaVendorAdapter result = new HibernateJpaVendorAdapter();
         result.setDatabase(Database.H2);
-        result.setDatabasePlatform("org.hibernate.dialect.H2Dialect");
+        result.setDatabasePlatform(env.getProperty("hibernate.dialect"));
         result.setGenerateDdl(true);
         result.setShowSql(true);
         return result;
