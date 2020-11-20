@@ -21,6 +21,7 @@ public class Order extends BaseEntity {
     @Embedded
     private Address shippingAddress;
 
+    @Embedded
     @AttributeOverride(name = "value", column = @Column(name = "total_price"))
     private Money totalPrice;
 

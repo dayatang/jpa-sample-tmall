@@ -1,7 +1,7 @@
 package yang.yu.tmall.domain;
 
 import javax.persistence.*;
-import java.util.Comparator;
+import java.time.LocalDateTime;
 
 /**
  * 订单状态迁移实体，记录某个时间点订单进入某个状态。
@@ -15,6 +15,8 @@ public class OrderStatusTransition extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     private OrderStatus status;
+
+    private LocalDateTime occurredOn = LocalDateTime.now();
 
     @Column(name = "seq_no")
     private int seqNo;
@@ -33,6 +35,14 @@ public class OrderStatusTransition extends BaseEntity {
 
     public void setStatus(OrderStatus status) {
         this.status = status;
+    }
+
+    public LocalDateTime getOccurredOn() {
+        return occurredOn;
+    }
+
+    public void setOccurredOn(LocalDateTime occurredOn) {
+        this.occurredOn = occurredOn;
     }
 
     public int getSeqNo() {
