@@ -24,7 +24,7 @@ public abstract class Buyer extends BaseEntity {
     private String email;
 
     @ElementCollection
-    @CollectionTable(name = "shipping_addresses", @JoinColumn(name = "buyer_id"))
+    @CollectionTable(name = "shipping_addresses", joinColumns = @JoinColumn(name = "buyer_id"))
     private Set<Address> shippingAddresses = new HashSet<>();
 
     protected Buyer() {
