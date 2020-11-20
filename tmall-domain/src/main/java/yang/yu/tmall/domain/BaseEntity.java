@@ -16,6 +16,7 @@ public abstract class BaseEntity implements Serializable {
 
     private LocalDateTime created;
 
+    @Column(name = "last_updated")
     private LocalDateTime lastUpdated;
 
     public int getId() {

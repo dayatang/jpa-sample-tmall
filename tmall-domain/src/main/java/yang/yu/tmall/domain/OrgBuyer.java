@@ -6,6 +6,7 @@ import javax.persistence.*;
 @DiscriminatorValue("O")
 public class OrgBuyer extends Buyer {
 
+    @Column(name = "business_license_no")
     private String businessLicenseNo;
 
     private String taxNo;

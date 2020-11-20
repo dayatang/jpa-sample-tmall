@@ -12,7 +12,7 @@ public class PersonalBuyer extends Buyer {
     private Gender gender;
 
     @ElementCollection
-    @CollectionTable(name = "contact_infos")
+    @CollectionTable(name = "contact_infos", joinColumns = @JoinColumn(name = "buyer_id"))
     @MapKeyEnumerated(EnumType.STRING)
     @MapKeyColumn(name = "im_type")
     @Column(name = "im_value")

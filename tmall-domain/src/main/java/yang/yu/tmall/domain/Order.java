@@ -8,6 +8,7 @@ import java.util.*;
 @Table(name = "orders")
 public class Order extends BaseEntity {
 
+    @Column(name = "order_no")
     private String orderNo;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)

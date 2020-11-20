@@ -15,14 +15,16 @@ public abstract class Buyer extends BaseEntity {
     @Column(nullable = false, unique = true)
     private String name;
 
+    @Column(name = "mobile_no")
     private String mobileNo;
 
+    @Column(name = "wired_no")
     private String wiredNo;
 
     private String email;
 
     @ElementCollection
-    @CollectionTable(name = "shipping_addresses")
+    @CollectionTable(name = "shipping_addresses", @JoinColumn(name = "buyer_id"))
     private Set<Address> shippingAddresses = new HashSet<>();
 
     protected Buyer() {

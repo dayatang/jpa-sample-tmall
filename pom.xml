@@ -162,7 +162,7 @@
                 <jdbc.artifactId>mysql-connector-java</jdbc.artifactId>
                 <jdbc.version>${mysql.version}</jdbc.version>
                 <jdbc.driverClassName>com.mysql.cj.jdbc.Driver</jdbc.driverClassName>
-                <jdbc.url><![CDATA[jdbc:mysql://127.0.0.1:3306/$tmalldb?createDatabaseIfNotExist=true]]></jdbc.url>
+                <jdbc.url><![CDATA[jdbc:mysql://127.0.0.1:3306/tmalldb?createDatabaseIfNotExist=true]]></jdbc.url>
                 <jdbc.username>${mysql.username}</jdbc.username>
                 <jdbc.password>${mysql.password}</jdbc.password>
                 <hibernate.dialect>org.hibernate.dialect.MySQL8Dialect</hibernate.dialect>

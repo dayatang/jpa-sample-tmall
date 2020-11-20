@@ -1,5 +1,6 @@
 package yang.yu.tmall.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -15,6 +16,7 @@ public class Pricing extends BaseEntity {
 
     private Money unitPrice;
 
+    @Column(name = "pricing_time")
     private LocalDateTime pricingTime;
 
     public Pricing() {
