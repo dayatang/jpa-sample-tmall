@@ -39,12 +39,12 @@ public class BuyerRepositoryJpql implements Buyers {
     }
 
     @Override
-    public Optional<Buyer> findById(int id) {
+    public Optional<Buyer> getById(int id) {
         return Optional.ofNullable(entityManager.find(Buyer.class, id));
     }
 
     @Override
-    public Optional<Buyer> findByName(String name) {
+    public Optional<Buyer> getByName(String name) {
         return entityManager
                 .createQuery("select o from Buyer o where o.name = :name", Buyer.class)
                 .setParameter("name", name)

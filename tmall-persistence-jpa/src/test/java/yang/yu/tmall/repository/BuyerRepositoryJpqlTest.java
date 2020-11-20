@@ -31,14 +31,14 @@ class BuyerRepositoryJpqlTest extends BaseIntegrationTest {
 
     @Test
     void findById() {
-        assertThat(buyers.findById(buyer1.getId()).get()).isEqualTo(buyer1);
-        assertThat(buyers.findById(buyer2.getId()).get()).isEqualTo(buyer2);
+        assertThat(buyers.getById(buyer1.getId()).get()).isEqualTo(buyer1);
+        assertThat(buyers.getById(buyer2.getId()).get()).isEqualTo(buyer2);
     }
 
     @Test
     void findByName() {
-        assertThat(buyers.findByName(buyer1Name).get()).isEqualTo(buyer1);
-        assertThat(buyers.findByName(buyer2Name).get()).isEqualTo(buyer2);
+        assertThat(buyers.getByName(buyer1Name).get()).isEqualTo(buyer1);
+        assertThat(buyers.getByName(buyer2Name).get()).isEqualTo(buyer2);
     }
 
     @Test
@@ -72,8 +72,8 @@ class BuyerRepositoryJpqlTest extends BaseIntegrationTest {
     void update() {
         buyer1.setName("李四");
         buyers.save(buyer1);
-        assertThat(buyers.findById(buyer1.getId()).get().getName()).isEqualTo("李四");
-        assertThat(buyers.findById(buyer2.getId()).get().getName()).isEqualTo(buyer2Name);
+        assertThat(buyers.getById(buyer1.getId()).get().getName()).isEqualTo("李四");
+        assertThat(buyers.getById(buyer2.getId()).get().getName()).isEqualTo(buyer2Name);
     }
 
     @Test

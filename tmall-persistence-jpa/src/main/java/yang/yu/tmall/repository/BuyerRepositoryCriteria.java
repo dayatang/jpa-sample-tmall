@@ -42,12 +42,12 @@ public class BuyerRepositoryCriteria implements Buyers {
     }
 
     @Override
-    public Optional<Buyer> findById(int id) {
+    public Optional<Buyer> getById(int id) {
         return Optional.ofNullable(entityManager.find(Buyer.class, id));
     }
 
     @Override
-    public Optional<Buyer> findByName(String name) {
+    public Optional<Buyer> getByName(String name) {
         CriteriaQuery<Buyer> query = createCriteriaQuery(Buyer.class);
         Root<Buyer> root = query.from(Buyer.class);
         Predicate predicate = getCriteriaBuilder().equal(root.get("name"), name);

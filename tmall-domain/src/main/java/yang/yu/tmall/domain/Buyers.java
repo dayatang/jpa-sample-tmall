@@ -14,9 +14,9 @@ public interface Buyers {
 
     void deleteAll();
 
-    Optional<Buyer> findById(int id);
+    Optional<Buyer> getById(int id);
 
-    Optional<Buyer> findByName(String name);
+    Optional<Buyer> getByName(String name);
 
     Stream<Buyer> findByNameStartsWith(String nameFragment);
 
