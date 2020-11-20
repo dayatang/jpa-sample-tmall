@@ -1,10 +1,8 @@
 package yang.yu.tmall.domain;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
-import javax.persistence.Version;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 @MappedSuperclass
 public abstract class BaseEntity implements Serializable {
@@ -15,6 +13,10 @@ public abstract class BaseEntity implements Serializable {
 
     @Version
     private int version;
+
+    private LocalDateTime created;
+
+    private LocalDateTime lastUpdated;
 
     public int getId() {
         return id;
@@ -30,5 +32,23 @@ public abstract class BaseEntity implements Serializable {
 
     public void setVersion(int version) {
         this.version = version;
+    }
+
+    public LocalDateTime getCreated() {
+        return created;
+    }
+
+    public LocalDateTime getLastUpdated() {
+        return lastUpdated;
+    }
+
+    @PrePersist
+    public void prePersist() {
+        created = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    public void preUpdate() {
+        lastUpdated = LocalDateTime.now();
     }
 }
