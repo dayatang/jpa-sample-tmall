@@ -16,16 +16,16 @@ public class Pricing extends BaseEntity {
 
     private Money unitPrice;
 
-    @Column(name = "pricing_time")
-    private LocalDateTime pricingTime;
+    @Column(name = "effective_from")
+    private LocalDateTime effectiveFrom;
 
     public Pricing() {
     }
 
-    public Pricing(Product product, Money unitPrice, LocalDateTime pricingTime) {
+    public Pricing(Product product, Money unitPrice, LocalDateTime effectiveFrom) {
         this.product = product;
         this.unitPrice = unitPrice;
-        this.pricingTime = pricingTime;
+        this.effectiveFrom = effectiveFrom;
     }
 
     public Pricing(Product product, Money unitPrice) {
@@ -48,12 +48,12 @@ public class Pricing extends BaseEntity {
         this.unitPrice = unitPrice;
     }
 
-    public LocalDateTime getPricingTime() {
-        return pricingTime;
+    public LocalDateTime getEffectiveFrom() {
+        return effectiveFrom;
     }
 
-    public void setPricingTime(LocalDateTime pricingTime) {
-        this.pricingTime = pricingTime;
+    public void setEffectiveFrom(LocalDateTime pricingTime) {
+        this.effectiveFrom = pricingTime;
     }
 
     @Override
@@ -66,12 +66,12 @@ public class Pricing extends BaseEntity {
         }
         Pricing pricing = (Pricing) o;
         return getProduct().equals(pricing.getProduct()) &&
-                getPricingTime().equals(pricing.getPricingTime());
+                getEffectiveFrom().equals(pricing.getEffectiveFrom());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getProduct(), getPricingTime());
+        return Objects.hash(getProduct(), getEffectiveFrom());
     }
 
     @Override
@@ -79,7 +79,7 @@ public class Pricing extends BaseEntity {
         return "Pricing{" +
                 "product=" + product +
                 ", unitPrice=" + unitPrice +
-                ", pricingTime=" + pricingTime +
+                ", pricingTime=" + effectiveFrom +
                 '}';
     }
 }
