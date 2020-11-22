@@ -14,8 +14,8 @@ public interface PricingRepository extends Pricings, JpaRepository<Pricing, Inte
 
     @Override
     default Optional<Pricing> findLastByProduct(Product product, LocalDateTime time) {
-        return findFirstByProductAndEffectiveTimeBeforeOrderByEffectiveTime(product, time);
+        return findFirstByProductAndEffectiveTimeIsLessThanEqualOrderByEffectiveTimeDesc(product, time);
     }
 
-    Optional<Pricing> findFirstByProductAndEffectiveTimeBeforeOrderByEffectiveTime(Product product, LocalDateTime time);
+    Optional<Pricing> findFirstByProductAndEffectiveTimeIsLessThanEqualOrderByEffectiveTimeDesc(Product product, LocalDateTime time);
 }

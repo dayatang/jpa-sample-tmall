@@ -2,6 +2,7 @@ package yang.yu.tmall.spring;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
@@ -17,6 +18,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
 @Configuration
+@ComponentScan("yang.yu.tmall")
 @EnableJpaRepositories(basePackages = {"yang.yu.tmall.repository"})
 @EnableTransactionManagement
 @PropertySource("/jdbc.properties")
