@@ -13,6 +13,9 @@ import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -26,9 +29,9 @@ class OrdersTest implements WithAssertions {
     @Inject
     private EntityManager entityManager;
 
-    private Order order1, order2;
+    private Order order1, order2, order3;
 
-    private OrderLine lineItem1, lineItem2, lineItem3;
+    private OrderLine lineItem1, lineItem2, lineItem3, lineItem4;
 
     private Product product1, product2;
 
@@ -45,6 +48,7 @@ class OrdersTest implements WithAssertions {
         lineItem1 = new OrderLine(product1, 3, Money.valueOf(3500));
         lineItem2 = new OrderLine(product1, 5, Money.valueOf(3500));
         lineItem3 = new OrderLine(product2, 3, Money.valueOf(8500));
+        lineItem4 = new OrderLine(product2, 2, Money.valueOf(8500));
         order1 = new Order();
         order1.setBuyer(buyer1);
         order1.addLineItem(lineItem1);
@@ -56,14 +60,20 @@ class OrdersTest implements WithAssertions {
         order2.addLineItem(lineItem2);
         order2.setOrderNo("order2");
         order2 = orders.save(order2);
+        order3 = new Order();
+        order3.setBuyer(buyer2);
+        order3.addLineItem(lineItem2);
+        order3.addLineItem(lineItem3);
+        order3.setOrderNo("order3");
+        order3 = orders.save(order3);
     }
 
     @AfterEach
     void afterEach() {
         Arrays.asList(product1, product2, buyer1, buyer2)
                 .forEach(entityManager::remove);
-        orders.delete(order1);
-        orders.delete(order2);
+        Arrays.asList(order1, order2, order3)
+                .forEach(orders::delete);
     }
 
     @Test
@@ -75,10 +85,14 @@ class OrdersTest implements WithAssertions {
 
     @Test
     void getByOrderNo() {
+        Arrays.asList(order1, order2).forEach(order -> {
+            assertThat(orders.getByOrderNo(order.getOrderNo())).containsSame(order);
+        });
     }
 
     @Test
     void findByBuyer() {
+        assertThat(orders.findByBuyer(buyer1)).hasSize(2).allMatch(order -> order.getBuyer().equals(buyer1));
     }
 
     @Test

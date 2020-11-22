@@ -21,24 +21,7 @@ public interface OrderRepository extends Orders, JpaRepository<Order, Integer>, 
         return findByBuyerOrderByCreatedDesc(buyer);
     }
 
-    default Stream<Order> findByCreatedBetween(LocalDateTime from, LocalDateTime to) {
-        return findByCreatedBetweenOrderByCreatedDesc(from, to);
-    }
-
-    default Stream<Order> findByBuyerAndCreatedBetween(Buyer buyer, LocalDateTime from, LocalDateTime to) {
-        return findByBuyerAndCreatedBetweenOrderByCreatedDesc(buyer, from, to);
-    }
-
-    default Stream<Order> findByBuyerAndStatus(Buyer buyer, OrderStatus status) {
-        return findByBuyerAndStatusOrderByCreatedDesc(buyer, status);
-    }
-
     Stream<Order> findByBuyerOrderByCreatedDesc(Buyer buyer);
 
-    Stream<Order> findByCreatedBetweenOrderByCreatedDesc(LocalDateTime from, LocalDateTime to);
-
-    Stream<Order> findByBuyerAndCreatedBetweenOrderByCreatedDesc(Buyer buyer, LocalDateTime from, LocalDateTime to);
-
-    Stream<Order> findByBuyerAndStatusOrderByCreatedDesc(Buyer buyer, OrderStatus status);
 
 }

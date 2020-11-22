@@ -26,9 +26,6 @@ public class Order extends BaseEntity {
     @AttributeOverride(name = "value", column = @Column(name = "total_price"))
     private Money totalPrice;
 
-    @Enumerated(EnumType.STRING)
-    private OrderStatus status = OrderStatus.PENDING;
-
     public String getOrderNo() {
         return orderNo;
     }
@@ -80,14 +77,6 @@ public class Order extends BaseEntity {
 
     public void setTotalPrice(Money totalPrice) {
         this.totalPrice = totalPrice;
-    }
-
-    public OrderStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(OrderStatus status) {
-        this.status = status;
     }
 
     private Money calculateTotalPrice() {
