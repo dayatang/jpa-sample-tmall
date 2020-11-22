@@ -5,7 +5,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
-import yang.yu.tmall.domain.*;
+import yang.yu.tmall.domain.buyers.*;
 import yang.yu.tmall.spring.JpaSpringConfig;
 
 import javax.inject.Inject;

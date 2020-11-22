@@ -5,7 +5,13 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
-import yang.yu.tmall.domain.*;
+import yang.yu.tmall.domain.buyers.OrgBuyer;
+import yang.yu.tmall.domain.buyers.PersonalBuyer;
+import yang.yu.tmall.domain.commons.Money;
+import yang.yu.tmall.domain.products.Product;
+import yang.yu.tmall.domain.sales.Order;
+import yang.yu.tmall.domain.sales.OrderLine;
+import yang.yu.tmall.domain.sales.Orders;
 import yang.yu.tmall.spring.JpaSpringConfig;
 
 import javax.inject.Inject;

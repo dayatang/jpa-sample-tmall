@@ -1,7 +1,7 @@
 package yang.yu.tmall.repository;
 
-import yang.yu.tmall.domain.ImType;
-import yang.yu.tmall.domain.PersonalBuyer;
+import yang.yu.tmall.domain.buyers.ImType;
+import yang.yu.tmall.domain.buyers.PersonalBuyer;
 
 import javax.persistence.EntityManager;
 import java.util.Optional;

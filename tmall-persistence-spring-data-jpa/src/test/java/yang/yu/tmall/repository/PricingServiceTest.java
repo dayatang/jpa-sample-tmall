@@ -6,7 +6,11 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
-import yang.yu.tmall.domain.*;
+import yang.yu.tmall.domain.commons.Money;
+import yang.yu.tmall.domain.pricing.Pricing;
+import yang.yu.tmall.domain.pricing.PricingException;
+import yang.yu.tmall.domain.pricing.PricingService;
+import yang.yu.tmall.domain.products.Product;
 import yang.yu.tmall.spring.JpaSpringConfig;
 
 import javax.inject.Inject;

@@ -2,6 +2,10 @@ package yang.yu.tmall.domain;
 
 import org.assertj.core.data.Percentage;
 import org.junit.jupiter.api.Test;
+import yang.yu.tmall.domain.commons.Money;
+import yang.yu.tmall.domain.products.Product;
+import yang.yu.tmall.domain.sales.Order;
+import yang.yu.tmall.domain.sales.OrderLine;
 
 import java.math.BigDecimal;
 

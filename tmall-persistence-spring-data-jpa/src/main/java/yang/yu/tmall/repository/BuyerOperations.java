@@ -1,6 +1,6 @@
 package yang.yu.tmall.repository;
 
-import yang.yu.tmall.domain.PersonalBuyer;
+import yang.yu.tmall.domain.buyers.PersonalBuyer;
 
 import java.util.Optional;
 

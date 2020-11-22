@@ -1,9 +1,9 @@
 package yang.yu.tmall.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import yang.yu.tmall.domain.Buyer;
-import yang.yu.tmall.domain.Order;
-import yang.yu.tmall.domain.Orders;
+import yang.yu.tmall.domain.buyers.Buyer;
+import yang.yu.tmall.domain.sales.Order;
+import yang.yu.tmall.domain.sales.Orders;
 
 import javax.inject.Named;
 import java.util.Optional;

@@ -1,9 +1,9 @@
 package yang.yu.tmall.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import yang.yu.tmall.domain.Pricing;
-import yang.yu.tmall.domain.Pricings;
-import yang.yu.tmall.domain.Product;
+import yang.yu.tmall.domain.pricing.Pricing;
+import yang.yu.tmall.domain.pricing.Pricings;
+import yang.yu.tmall.domain.products.Product;
 
 import javax.inject.Named;
 import java.time.LocalDateTime;

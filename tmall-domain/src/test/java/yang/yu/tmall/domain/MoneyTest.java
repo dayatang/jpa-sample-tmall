@@ -1,6 +1,7 @@
 package yang.yu.tmall.domain;
 
 import org.junit.jupiter.api.Test;
+import yang.yu.tmall.domain.commons.Money;
 
 import java.math.BigDecimal;
 
