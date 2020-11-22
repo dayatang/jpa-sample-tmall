@@ -9,7 +9,8 @@ import java.util.Objects;
 @Table(name = "orders")
 public class Order extends BaseEntity {
 
-    @Column(name = "order_no")
+    @Basic(optional = false)
+    @Column(name = "order_no", nullable = false)
     private String orderNo;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
