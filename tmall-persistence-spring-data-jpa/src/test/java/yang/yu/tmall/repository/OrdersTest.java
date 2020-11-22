@@ -49,21 +49,28 @@ class OrdersTest implements WithAssertions {
         order1.setBuyer(buyer1);
         order1.addLineItem(lineItem1);
         order1.addLineItem(lineItem3);
+        order1.setOrderNo("order1");
         order1 = orders.save(order1);
         order2 = new Order();
         order2.setBuyer(buyer1);
         order2.addLineItem(lineItem2);
+        order2.setOrderNo("order2");
         order2 = orders.save(order2);
     }
 
     @AfterEach
     void afterEach() {
-        Arrays.asList(product1, product2, buyer1, buyer2, order1, order2)
+        Arrays.asList(product1, product2, buyer1, buyer2)
                 .forEach(entityManager::remove);
+        orders.delete(order1);
+        orders.delete(order2);
     }
 
     @Test
     void getById() {
+        Arrays.asList(order1, order2).forEach(order -> {
+            assertThat(orders.getById(order.getId())).containsSame(order);
+        });
     }
 
     @Test
