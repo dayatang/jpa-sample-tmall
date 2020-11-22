@@ -1,15 +1,11 @@
 package yang.yu.tmall.repository;
 
-import yang.yu.tmall.domain.Buyer;
 import yang.yu.tmall.domain.ImType;
 import yang.yu.tmall.domain.PersonalBuyer;
 
-import javax.inject.Inject;
-import javax.inject.Named;
 import javax.persistence.EntityManager;
 import java.util.Optional;
 
-@Named
 public class BuyerOperationsImpl implements BuyerOperations {
 
     private final EntityManager entityManager;

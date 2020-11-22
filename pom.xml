@@ -151,7 +151,7 @@
                 <jdbc.driverClassName>org.h2.Driver</jdbc.driverClassName>
                 <jdbc.url><![CDATA[jdbc:h2:mem:tmall;DB_CLOSE_DELAY=-1]]></jdbc.url>
                 <jdbc.username>sa</jdbc.username>
-                <jdbc.password />
+                <jdbc.password/>
                 <hibernate.dialect>org.hibernate.dialect.H2Dialect</hibernate.dialect>
             </properties>
         </profile>

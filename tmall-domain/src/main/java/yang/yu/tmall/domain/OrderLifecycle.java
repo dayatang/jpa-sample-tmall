@@ -41,7 +41,7 @@ public class OrderLifecycle {
                 .collect(Collectors.toList());
     }
 
-    public static OrderLifecycle of (Order order) {
+    public static OrderLifecycle of(Order order) {
         return new OrderLifecycle(order);
     }
 }

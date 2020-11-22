@@ -30,5 +30,5 @@ class OrderTest extends BaseUnitTest {
         //System.out.println(subtotal2);
         assertThat(order.getTotalPrice().getValue().doubleValue())
                 .isCloseTo(subtotal1 + subtotal2, Percentage.withPercentage(0.00001));
-   }
+    }
 }

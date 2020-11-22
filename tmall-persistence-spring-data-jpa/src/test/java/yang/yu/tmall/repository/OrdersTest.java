@@ -11,13 +11,7 @@ import yang.yu.tmall.spring.JpaSpringConfig;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
-
 import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringJUnitConfig(classes = JpaSpringConfig.class)
 @Transactional
@@ -96,18 +90,9 @@ class OrdersTest implements WithAssertions {
     }
 
     @Test
-    void findByCreatedBetween() {
-    }
-
-    @Test
-    void findByBuyerAndCreatedBetween() {
-    }
-
-    @Test
-    void findByBuyerAndStatus() {
-    }
-
-    @Test
     void findByProduct() {
+        assertThat(orders.findByProduct(product1))
+                .contains(order1)
+                .doesNotContain(order2);
     }
 }

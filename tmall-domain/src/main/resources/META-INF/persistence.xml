@@ -6,15 +6,15 @@
              version="2.2">
 
     <persistence-unit name="default" transaction-type="RESOURCE_LOCAL">
-        <description> Hibernate JPA Configuration Example</description>
+        <description>Hibernate JPA Configuration Example</description>
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="${jdbc.driverClassName}"/>
             <property name="javax.persistence.jdbc.url" value="${jdbc.url}"/>
             <property name="javax.persistence.jdbc.user" value="${jdbc.username}"/>
             <property name="javax.persistence.jdbc.password" value="${jdbc.password}"/>
-            <property name="hibernate.show_sql" value="true" />
-            <property name="hibernate.hbm2ddl.auto" value="update" />
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
             <property name="hibernate.dialect" value="${hibernate.dialect}"/>
         </properties>
     </persistence-unit>
