@@ -13,7 +13,7 @@ import java.util.Optional;
 public interface PricingRepository extends Pricings, JpaRepository<Pricing, Integer> {
 
     @Override
-    default Optional<Pricing> findLastByProduct(Product product, LocalDateTime time) {
+    default Optional<Pricing> getPricingAt(Product product, LocalDateTime time) {
         return findFirstByProductAndEffectiveTimeIsLessThanEqualOrderByEffectiveTimeDesc(product, time);
     }
 

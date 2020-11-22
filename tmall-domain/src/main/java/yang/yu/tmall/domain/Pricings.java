@@ -7,6 +7,6 @@ public interface Pricings {
 
     Pricing save(Pricing pricing);
 
-    Optional<Pricing> findLastByProduct(Product product, LocalDateTime time);
+    Optional<Pricing> getPricingAt(Product product, LocalDateTime time);
 
 }

@@ -2,14 +2,18 @@ package yang.yu.tmall.domain;
 
 import javax.inject.Named;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Named
 public class PricingService {
 
     private Pricings pricings;
 
-    public PricingService(Pricings pricings) {
+    private Products products;
+
+    public PricingService(Pricings pricings, Products products) {
         this.pricings = pricings;
+        this.products = products;
     }
 
     public Pricing setUnitPrice(Product product, Money unitPrice, LocalDateTime effectiveTime) {
@@ -21,14 +25,18 @@ public class PricingService {
         return setUnitPrice(product, newPrice, effectiveTime);
     }
 
+    public void adjustPriceByPercentage(Set<Product> products, int percentage, LocalDateTime effectiveTime) {
+        products.forEach(product -> adjustPriceByPercentage(product, percentage, effectiveTime));
+    }
+
     public Money getPriceAt(Product product, LocalDateTime time) {
-        return pricings.findLastByProduct(product, time)
+        return pricings.getPricingAt(product, time)
                 .map(Pricing::getUnitPrice)
                 .orElseThrow(() -> new PricingException(product.getName() + "'s price has not been set yet."));
     }
 
     public Money getCurrentPrice(Product product) {
-        return pricings.findLastByProduct(product, LocalDateTime.now())
+        return pricings.getPricingAt(product, LocalDateTime.now())
                 .map(Pricing::getUnitPrice)
                 .orElseThrow(() -> new PricingException(product.getName() + "'s price has not been set yet."));
 

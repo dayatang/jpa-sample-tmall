@@ -1,6 +1,7 @@
 package yang.yu.tmall.repository;
 
 import org.assertj.core.api.WithAssertions;
+import org.assertj.core.util.Sets;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,6 +15,7 @@ import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.LinkedHashSet;
 
 @SpringJUnitConfig(classes = JpaSpringConfig.class)
 @Transactional
@@ -59,6 +61,16 @@ class PricingServiceTest implements WithAssertions {
         assertThat(service.getPriceAt(product1, time2002_02_15)).isEqualTo(Money.valueOf(600));
         assertThat(service.getPriceAt(product1, time2002_02_16)).isEqualTo(Money.valueOf(600));
         assertThat(service.getPriceAt(product1, time2002_10_01)).isEqualTo(Money.valueOf(500));
+    }
+
+    @Test
+    void adjustPriceByPercentage() {
+        LocalDateTime time2002_11_01 = LocalDate.of(2020, 11, 1).atStartOfDay();
+        LocalDateTime time2002_11_02 = LocalDate.of(2020, 11, 2).atStartOfDay();
+        LinkedHashSet<Product> productSet = Sets.newLinkedHashSet(product1, product2);
+        service.adjustPriceByPercentage(productSet, 10, time2002_11_01);
+        assertThat(service.getPriceAt(product1, time2002_11_02)).isEqualTo(Money.valueOf(550));
+        assertThat(service.getPriceAt(product2, time2002_11_02)).isEqualTo(Money.valueOf(7700));
     }
 
     @Test
