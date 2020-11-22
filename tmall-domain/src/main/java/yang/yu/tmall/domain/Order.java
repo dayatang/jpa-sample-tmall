@@ -1,6 +1,7 @@
 package yang.yu.tmall.domain;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.*;
 

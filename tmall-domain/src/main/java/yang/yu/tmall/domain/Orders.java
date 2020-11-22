@@ -19,4 +19,9 @@ public interface Orders {
     Stream<Order> findByBuyerAndStatus(Buyer buyer, OrderStatus status);
 
     Stream<Order> findByProduct(Product product);
+
+    Order save(Order order);
+
+    void delete(Order order);
+
 }

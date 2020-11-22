@@ -28,6 +28,21 @@ public class OrderLine extends BaseEntity {
     public OrderLine() {
     }
 
+    public OrderLine(Product product, BigDecimal quantity, Money unitPrice) {
+        this.product = product;
+        this.quantity = quantity;
+        this.unitPrice = unitPrice;
+        calculateSubTotal();
+    }
+
+    public OrderLine(Product product, double quantity, Money unitPrice) {
+        this(product, BigDecimal.valueOf(quantity), unitPrice);
+    }
+
+    public OrderLine(Product product, double quantity) {
+        this(product, quantity, Money.ZERO);
+    }
+
     public Order getOrder() {
         return order;
     }

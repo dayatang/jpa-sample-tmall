@@ -1,6 +1,5 @@
 package yang.yu.tmall.domain;
 
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.util.Objects;
@@ -8,17 +7,12 @@ import java.util.Objects;
 @Embeddable
 public class Address {
 
-    @Basic(optional = false)
-    @Column(nullable = false)
     private String province;
 
-    @Basic(optional = false)
     private String city;
 
-    @Basic(optional = false)
     private String detail;
 
-    @Basic(optional = false)
     private String receiver;
 
     @Column(name = "receiver_phone")
