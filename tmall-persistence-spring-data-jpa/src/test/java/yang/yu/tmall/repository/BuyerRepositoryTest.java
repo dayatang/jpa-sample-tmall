@@ -39,14 +39,14 @@ class BuyerRepositoryTest implements WithAssertions {
 
     @Test
     void findById() {
-        assertThat(buyers.getById(buyer1.getId()).get()).isEqualTo(buyer1);
-        assertThat(buyers.getById(buyer2.getId()).get()).isEqualTo(buyer2);
+        assertThat(buyers.getById(buyer1.getId())).containsSame(buyer1);
+        assertThat(buyers.getById(buyer2.getId())).containsSame(buyer2);
     }
 
     @Test
     void findByName() {
-        assertThat(buyers.getByName(buyer1Name).get()).isEqualTo(buyer1);
-        assertThat(buyers.getByName(buyer2Name).get()).isEqualTo(buyer2);
+        assertThat(buyers.getByName(buyer1Name)).containsSame(buyer1);
+        assertThat(buyers.getByName(buyer2Name)).containsSame(buyer2);
     }
 
     @Test
@@ -74,7 +74,7 @@ class BuyerRepositoryTest implements WithAssertions {
     void findPersonalBuyerByQQ() {
         buyer1.setImInfo(ImType.QQ, "34567");
         buyers.save(buyer1);
-        assertThat(buyers.findPersonalBuyerByQQ("34567").get()).isEqualTo(buyer1);
+        assertThat(buyers.findPersonalBuyerByQQ("34567")).containsSame(buyer1);
     }
 
     @Test
@@ -87,7 +87,7 @@ class BuyerRepositoryTest implements WithAssertions {
     void update() {
         buyer1.setName("李四");
         buyers.save(buyer1);
-        assertThat(buyers.getById(buyer1.getId()).get().getName()).isEqualTo("李四");
-        assertThat(buyers.getById(buyer2.getId()).get().getName()).isEqualTo(buyer2Name);
+        assertThat(buyers.getById(buyer1.getId()).map(Buyer::getName)).containsSame("李四");
+        assertThat(buyers.getById(buyer2.getId()).map(Buyer::getName)).containsSame(buyer2Name);
     }
 }
