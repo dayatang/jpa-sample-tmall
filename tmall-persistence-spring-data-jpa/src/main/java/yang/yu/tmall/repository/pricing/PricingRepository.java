@@ -1,4 +1,4 @@
-package yang.yu.tmall.repository;
+package yang.yu.tmall.repository.pricing;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import yang.yu.tmall.domain.pricing.Pricing;
