@@ -61,5 +61,13 @@ class PricingServiceTest implements WithAssertions {
         assertThat(service.getPriceAt(product1, time2002_10_01)).isEqualTo(Money.valueOf(500));
     }
 
+    @Test
+    void priceNotSetYet() {
+        assertThatThrownBy(() -> {
+            LocalDateTime time2002_02_14 = LocalDate.of(2020, 2, 14).atStartOfDay();
+            service.getPriceAt(product1, time2002_02_14);
+        }).isInstanceOf(PricingException.class)
+        .hasMessage("电冰箱's price has not been set yet.");
+    }
 }
 

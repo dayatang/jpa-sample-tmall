@@ -24,13 +24,13 @@ public class PricingService {
     public Money getPriceAt(Product product, LocalDateTime time) {
         return pricings.findLastByProduct(product, time)
                 .map(Pricing::getUnitPrice)
-                .orElseThrow(() -> new PricingException(product.getName() + "' price has not been set yet"));
+                .orElseThrow(() -> new PricingException(product.getName() + "'s price has not been set yet."));
     }
 
     public Money getCurrentPrice(Product product) {
         return pricings.findLastByProduct(product, LocalDateTime.now())
                 .map(Pricing::getUnitPrice)
-                .orElseThrow(() -> new PricingException(product.getName() + "' price has not been set yet"));
+                .orElseThrow(() -> new PricingException(product.getName() + "'s price has not been set yet."));
 
     }
 }
