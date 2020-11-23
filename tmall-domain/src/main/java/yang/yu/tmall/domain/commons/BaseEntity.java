@@ -46,6 +46,10 @@ public abstract class BaseEntity implements Serializable {
         return lastUpdated;
     }
 
+    public boolean isNew() {
+        return isNew;
+    }
+
     @PrePersist
     public void prePersist() {
         this.isNew = false;
