@@ -12,8 +12,6 @@ public interface Buyers {
 
     List<Buyer> findAll();
 
-    void deleteAll();
-
     Optional<Buyer> getById(int id);
 
     Optional<Buyer> getByName(String name);
