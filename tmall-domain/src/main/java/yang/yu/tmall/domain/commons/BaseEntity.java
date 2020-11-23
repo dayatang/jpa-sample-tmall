@@ -19,6 +19,9 @@ public abstract class BaseEntity implements Serializable {
     @Column(name = "last_updated")
     private LocalDateTime lastUpdated;
 
+    @Transient
+    private boolean isNew = true;
+
     public int getId() {
         return id;
     }
@@ -45,11 +48,17 @@ public abstract class BaseEntity implements Serializable {
 
     @PrePersist
     public void prePersist() {
+        this.isNew = false;
         created = LocalDateTime.now();
     }
 
     @PreUpdate
     public void preUpdate() {
         lastUpdated = LocalDateTime.now();
+    }
+
+    @PostLoad
+    void markNotNew() {
+        this.isNew = false;
     }
 }
