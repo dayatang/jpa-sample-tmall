@@ -51,13 +51,13 @@ public abstract class BaseEntity implements Serializable {
     }
 
     @PrePersist
-    public void prePersist() {
+    public void beforeCreate() {
         this.isNew = false;
         created = LocalDateTime.now();
     }
 
     @PreUpdate
-    public void preUpdate() {
+    public void afterSave() {
         lastUpdated = LocalDateTime.now();
     }
 
