@@ -34,11 +34,6 @@ public class BuyerRepositoryJpql implements Buyers {
     }
 
     @Override
-    public void deleteAll() {
-        entityManager.createQuery("DELETE FROM Buyer").executeUpdate();
-    }
-
-    @Override
     public Optional<Buyer> getById(int id) {
         return Optional.ofNullable(entityManager.find(Buyer.class, id));
     }

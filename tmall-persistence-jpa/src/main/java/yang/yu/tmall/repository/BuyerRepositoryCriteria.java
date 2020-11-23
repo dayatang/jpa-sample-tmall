@@ -36,12 +36,6 @@ public class BuyerRepositoryCriteria implements Buyers {
     }
 
     @Override
-    public void deleteAll() {
-        CriteriaDelete<Buyer> criteriaDelete = entityManager.getCriteriaBuilder().createCriteriaDelete(Buyer.class);
-        entityManager.createQuery(criteriaDelete).executeUpdate();
-    }
-
-    @Override
     public Optional<Buyer> getById(int id) {
         return Optional.ofNullable(entityManager.find(Buyer.class, id));
     }
