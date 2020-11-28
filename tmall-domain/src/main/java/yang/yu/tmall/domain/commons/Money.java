@@ -5,6 +5,9 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Objects;
 
+/**
+ * 金额值对象。只保留两位小数
+ */
 @Embeddable
 public class Money {
 
@@ -14,25 +17,61 @@ public class Money {
 
     private BigDecimal value = BigDecimal.ZERO;
 
+    /**
+     * 从BigDecimal生成金额的工厂方法
+     * @param amount 金额数量
+     * @return 金额对象
+     */
     public static Money valueOf(BigDecimal amount) {
         return new Money(amount);
     }
 
+    /**
+     * 从int生成金额的工厂方法
+     * @param amount 金额数量
+     * @return 金额对象
+     */
     public static Money valueOf(int amount) {
         return new Money(BigDecimal.valueOf(amount));
     }
 
+    /**
+     * 从long生成金额的工厂方法
+     * @param amount 金额数量
+     * @return 金额对象
+     */
     public static Money valueOf(long amount) {
         return new Money(BigDecimal.valueOf(amount));
     }
 
+    /**
+     * 从double生成金额的工厂方法
+     * @param amount 金额数量
+     * @return 金额对象
+     */
     public static Money valueOf(double amount) {
         return new Money(BigDecimal.valueOf(amount));
     }
 
+    /**
+     * 从double生成金额的工厂方法
+     * @param amount 金额数量
+     * @return 金额对象
+     */
+    public static Object valueOf(String amount) {
+        return new Money(new BigDecimal(amount));
+    }
+
+    /**
+     * 构造函数
+     */
     public Money() {
     }
 
+    /**
+     * 构造函数。以BigDecimal为参数
+     * @param amount 金额值
+     */
     public Money(BigDecimal amount) {
         if (amount == null) {
             this.value = BigDecimal.ZERO;
@@ -41,14 +80,18 @@ public class Money {
         this.value = amount.setScale(SCALE, RoundingMode.HALF_UP);
     }
 
-    public static Object valueOf(String value) {
-        return new Money(new BigDecimal(value));
-    }
-
+    /**
+     * 获取金额值，以BigDecimal形式表示
+     * @return 金额值
+     */
     public BigDecimal getValue() {
         return value;
     }
 
+    /**
+     * 设置金额值
+     * @param value 要设置的金额值
+     */
     private void setValue(BigDecimal value) {
         this.value = value;
     }

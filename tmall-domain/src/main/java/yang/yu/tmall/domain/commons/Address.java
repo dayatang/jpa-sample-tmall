@@ -4,6 +4,9 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.util.Objects;
 
+/**
+ * 地址值对象
+ */
 @Embeddable
 public class Address {
 

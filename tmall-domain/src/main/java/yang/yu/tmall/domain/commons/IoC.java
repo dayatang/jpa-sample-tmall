@@ -3,6 +3,9 @@ package yang.yu.tmall.domain.commons;
 import java.lang.annotation.Annotation;
 import java.util.Set;
 
+/**
+ * 依赖注入容器门面类。用于获取容器管理的各种Bean
+ */
 public class IoC {
 
     private static InstanceProvider provider;
