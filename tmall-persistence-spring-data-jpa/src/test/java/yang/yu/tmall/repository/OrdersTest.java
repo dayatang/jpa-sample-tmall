@@ -21,7 +21,7 @@ import java.util.Arrays;
 
 @SpringJUnitConfig(classes = JpaSpringConfig.class)
 @Transactional
-class OrdersTest implements WithAssertions {
+public class OrdersTest implements WithAssertions {
 
     @Inject
     private Orders orders;

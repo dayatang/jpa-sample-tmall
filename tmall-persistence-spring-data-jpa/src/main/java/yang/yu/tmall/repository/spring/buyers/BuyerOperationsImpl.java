@@ -6,6 +6,9 @@ import yang.yu.tmall.domain.buyers.PersonalBuyer;
 import javax.persistence.EntityManager;
 import java.util.Optional;
 
+/**
+ * 买家仓储特殊接口实现
+ */
 public class BuyerOperationsImpl implements BuyerOperations {
 
     private final EntityManager entityManager;
@@ -13,6 +16,7 @@ public class BuyerOperationsImpl implements BuyerOperations {
     public BuyerOperationsImpl(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
+
 
     @Override
     public Optional<PersonalBuyer> findPersonalBuyerByQQ(String qq) {

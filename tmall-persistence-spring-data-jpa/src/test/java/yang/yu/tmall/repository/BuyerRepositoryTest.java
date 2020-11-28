@@ -13,7 +13,7 @@ import javax.transaction.Transactional;
 
 @SpringJUnitConfig(classes = JpaSpringConfig.class)
 @Transactional
-class BuyerRepositoryTest implements WithAssertions {
+public class BuyerRepositoryTest implements WithAssertions {
 
     private static final String buyer1Name = "张三";
 

@@ -23,7 +23,7 @@ import java.util.LinkedHashSet;
 
 @SpringJUnitConfig(classes = JpaSpringConfig.class)
 @Transactional
-class PricingServiceTest implements WithAssertions {
+public class PricingServiceTest implements WithAssertions {
 
     @Inject
     private PricingService service;

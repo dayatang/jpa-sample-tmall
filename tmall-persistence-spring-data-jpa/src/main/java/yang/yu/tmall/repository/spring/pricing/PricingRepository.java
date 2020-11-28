@@ -9,6 +9,9 @@ import javax.inject.Named;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
+/**
+ * 定价仓储的实现
+ */
 @Named
 public interface PricingRepository extends Pricings, JpaRepository<Pricing, Integer> {
 
