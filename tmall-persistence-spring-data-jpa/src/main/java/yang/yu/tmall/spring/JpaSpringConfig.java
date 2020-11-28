@@ -16,6 +16,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
+import java.util.HashMap;
+import java.util.Map;
 
 @Configuration
 @ComponentScan("yang.yu.tmall")
@@ -56,7 +58,14 @@ public class JpaSpringConfig {
         result.setDataSource(dataSource);
         result.setJpaVendorAdapter(adapter);
         result.setPackagesToScan("yang.yu.tmall.domain");
+        result.setJpaPropertyMap(hibernateProperties());
         return result;
+    }
+
+    private Map<String, String> hibernateProperties() {
+        Map<String, String> props = new HashMap<>();
+        props.put("hibernate.implicit_naming_strategy", "jpa");
+        return props;
     }
 
     @Bean
