@@ -1,4 +1,4 @@
-package yang.yu.tmall.repository.buyers;
+package yang.yu.tmall.repository.spring.buyers;
 
 import yang.yu.tmall.domain.buyers.ImType;
 import yang.yu.tmall.domain.buyers.PersonalBuyer;

@@ -1,4 +1,4 @@
-package yang.yu.tmall.repository.products;
+package yang.yu.tmall.repository.spring.products;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import yang.yu.tmall.domain.products.Product;

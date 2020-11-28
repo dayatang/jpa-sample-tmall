@@ -1,4 +1,4 @@
-package yang.yu.tmall.repository.sales;
+package yang.yu.tmall.repository.spring.sales;
 
 import yang.yu.tmall.domain.sales.Order;
 import yang.yu.tmall.domain.products.Product;

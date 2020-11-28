@@ -1,4 +1,4 @@
 /**
- * 实体仓储借口的原生JPA实现
+ * 实体仓储接口的原生JPA实现
  */
 package yang.yu.tmall.repository.jpa;

@@ -1,4 +1,4 @@
-package yang.yu.tmall.repository.buyers;
+package yang.yu.tmall.repository.spring.buyers;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import yang.yu.tmall.domain.buyers.Buyer;
