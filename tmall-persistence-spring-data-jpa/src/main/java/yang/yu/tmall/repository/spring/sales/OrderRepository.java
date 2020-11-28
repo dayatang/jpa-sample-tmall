@@ -29,7 +29,6 @@ public interface OrderRepository extends Orders, JpaRepository<Order, Integer>, 
      */
     Optional<Order> getByOrderNo(String orderNo);
 
-    
     default Stream<Order> findByBuyer(Buyer buyer) {
         return findByBuyerOrderByCreatedDesc(buyer);
     }

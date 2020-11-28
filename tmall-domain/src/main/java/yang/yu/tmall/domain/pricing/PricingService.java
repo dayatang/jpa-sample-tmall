@@ -13,11 +13,8 @@ public class PricingService {
 
     private Pricings pricings;
 
-    private Products products;
-
-    public PricingService(Pricings pricings, Products products) {
+    public PricingService(Pricings pricings) {
         this.pricings = pricings;
-        this.products = products;
     }
 
     public Pricing setUnitPrice(Product product, Money unitPrice, LocalDateTime effectiveTime) {
