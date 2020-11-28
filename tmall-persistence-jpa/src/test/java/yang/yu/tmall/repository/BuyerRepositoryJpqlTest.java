@@ -4,6 +4,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import yang.yu.tmall.domain.buyers.*;
+import yang.yu.tmall.repository.jpa.BuyerRepositoryJpql;
 
 class BuyerRepositoryJpqlTest extends BaseIntegrationTest {
 

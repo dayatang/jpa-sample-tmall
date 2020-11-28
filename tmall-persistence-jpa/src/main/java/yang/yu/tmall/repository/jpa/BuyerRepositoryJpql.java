@@ -1,4 +1,4 @@
-package yang.yu.tmall.repository;
+package yang.yu.tmall.repository.jpa;
 
 import yang.yu.tmall.domain.buyers.Buyer;
 import yang.yu.tmall.domain.buyers.Buyers;
