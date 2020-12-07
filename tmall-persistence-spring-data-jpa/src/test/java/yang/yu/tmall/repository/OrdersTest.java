@@ -60,7 +60,7 @@ public class OrdersTest implements WithAssertions {
         order.setOrderNo(orderNo);
         order.setBuyer(buyer);
         Arrays.stream(orderLines).forEach(order::addLineItem);
-        return orders.save(order);
+        return entityManager.merge(order);
     }
 
     @AfterEach
@@ -92,7 +92,7 @@ public class OrdersTest implements WithAssertions {
 
     @Test
     void findByProduct() {
-        assertThat(orders.findByProduct(product1))
+        assertThat(orders.findByProduct(product2))
                 .contains(order1)
                 .doesNotContain(order2);
     }

@@ -52,7 +52,7 @@ public class OrderRepositoryTest extends BaseIntegrationTest {
         order.setOrderNo(orderNo);
         order.setBuyer(buyer);
         Arrays.stream(orderLines).forEach(order::addLineItem);
-        return orders.save(order);
+        return entityManager.merge(order);
     }
 
     @AfterEach

@@ -3,7 +3,6 @@ package yang.yu.tmall.repository.jpa;
 import yang.yu.tmall.domain.buyers.Buyer;
 import yang.yu.tmall.domain.products.Product;
 import yang.yu.tmall.domain.sales.Order;
-import yang.yu.tmall.domain.sales.OrderLine;
 import yang.yu.tmall.domain.sales.Orders;
 
 import javax.persistence.EntityManager;
@@ -40,9 +39,6 @@ public class OrderRepository implements Orders {
 
     @Override
     public Stream<Order> findByProduct(Product product) {
-        entityManager.createQuery("select o from OrderLine o", OrderLine.class)
-                .getResultStream()
-                .forEach(System.out::println);
 
         String jpql = "select o.order from OrderLine o where o.product = :product order by o.order.created desc ";
         //String jpql = "select o from Order o join o.lineItems i where i.product = :product";
