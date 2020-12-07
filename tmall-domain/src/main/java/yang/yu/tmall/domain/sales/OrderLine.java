@@ -12,10 +12,11 @@ import java.util.Objects;
 @Table(name = "order_lines")
 public class OrderLine extends BaseEntity {
 
-    @ManyToOne
+    @ManyToOne(optional = false)
     private Order order;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "prod_id")
     private Product product;
 
     private BigDecimal quantity = BigDecimal.ZERO;

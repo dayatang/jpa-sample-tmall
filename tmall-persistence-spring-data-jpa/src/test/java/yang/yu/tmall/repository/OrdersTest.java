@@ -70,10 +70,10 @@ public class OrdersTest implements WithAssertions {
 
     @AfterEach
     void afterEach() {
-        Arrays.asList(product1, product2, buyer1, buyer2)
-                .forEach(entityManager::remove);
         Arrays.asList(order1, order2, order3)
                 .forEach(orders::delete);
+        Arrays.asList(product1, product2, buyer1, buyer2)
+                .forEach(entityManager::remove);
     }
 
     @Test
