@@ -16,12 +16,12 @@ import java.util.Objects;
 public class Pricing extends BaseEntity {
 
     @ManyToOne
-    private Product product;
+    private Product product;  //产品
 
-    private Money unitPrice;
+    private Money unitPrice; //单价
 
     @Column(name = "effective_time")
-    private LocalDateTime effectiveTime;
+    private LocalDateTime effectiveTime; //生效时间
 
     public Pricing() {
     }
@@ -40,24 +40,12 @@ public class Pricing extends BaseEntity {
         return product;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
-    }
-
     public Money getUnitPrice() {
         return unitPrice;
     }
 
-    public void setUnitPrice(Money unitPrice) {
-        this.unitPrice = unitPrice;
-    }
-
     public LocalDateTime getEffectiveTime() {
         return effectiveTime;
-    }
-
-    public void setEffectiveTime(LocalDateTime pricingTime) {
-        this.effectiveTime = pricingTime;
     }
 
     @Override
