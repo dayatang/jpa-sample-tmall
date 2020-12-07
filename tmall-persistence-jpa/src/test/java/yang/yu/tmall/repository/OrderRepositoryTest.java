@@ -1,10 +1,8 @@
 package yang.yu.tmall.repository;
 
-import org.assertj.core.api.WithAssertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 import yang.yu.tmall.domain.buyers.Buyer;
 import yang.yu.tmall.domain.buyers.OrgBuyer;
 import yang.yu.tmall.domain.buyers.PersonalBuyer;
@@ -13,22 +11,15 @@ import yang.yu.tmall.domain.products.Product;
 import yang.yu.tmall.domain.sales.Order;
 import yang.yu.tmall.domain.sales.OrderLine;
 import yang.yu.tmall.domain.sales.Orders;
-import yang.yu.tmall.spring.JpaSpringConfig;
+import yang.yu.tmall.repository.jpa.OrderRepository;
 
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 import java.util.Arrays;
 
-@SpringJUnitConfig(classes = JpaSpringConfig.class)
 @Transactional
-public class OrdersTest implements WithAssertions {
+public class OrderRepositoryTest extends BaseIntegrationTest {
 
-    @Inject
     private Orders orders;
-
-    @Inject
-    private EntityManager entityManager;
 
     private Order order1, order2, order3;
 
@@ -42,6 +33,7 @@ public class OrdersTest implements WithAssertions {
 
     @BeforeEach
     void beforeEach() {
+        orders = new OrderRepository(entityManager);
         product1 = entityManager.merge(new Product("电冰箱", null));
         product2 = entityManager.merge(new Product("电视机", null));
         buyer1 = entityManager.merge(new PersonalBuyer("张三"));
@@ -92,7 +84,7 @@ public class OrdersTest implements WithAssertions {
 
     @Test
     void findByProduct() {
-        assertThat(orders.findByProduct(product1))
+        assertThat(orders.findByProduct(product2))
                 .contains(order1)
                 .doesNotContain(order2);
     }

@@ -127,11 +127,10 @@ public class OrderLine extends BaseEntity {
     @Override
     public String toString() {
         return "OrderLine{" +
-                "product=" + product +
+                "order=" + order +
+                ", product=" + product +
                 ", quantity=" + quantity +
                 ", unitPrice=" + unitPrice +
-                ", discountRate=" + discountRate +
-                ", subTotal=" + subTotal +
                 '}';
     }
 }

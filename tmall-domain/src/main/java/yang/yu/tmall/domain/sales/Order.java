@@ -15,7 +15,7 @@ import java.util.Objects;
 public class Order extends BaseEntity {
 
     @Basic(optional = false)
-    @Column(name = "order_no", nullable = false)
+    @Column(name = "order_no", nullable = false, unique = true)
     private String orderNo;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
