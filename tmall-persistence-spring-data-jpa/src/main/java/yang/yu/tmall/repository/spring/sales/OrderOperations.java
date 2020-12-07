@@ -27,5 +27,9 @@ public interface OrderOperations {
      */
     Stream<Order> findByProduct(Product product, LocalDateTime from, LocalDateTime until);
 
+    /**
+     * 查找机构买家的订单
+     * @return 买家类型为机构的全部订单
+     */
     Stream<Order> findByOrgBuyers();
 }
