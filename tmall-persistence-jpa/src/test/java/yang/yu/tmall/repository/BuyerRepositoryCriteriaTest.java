@@ -20,7 +20,7 @@ class BuyerRepositoryCriteriaTest extends BaseIntegrationTest {
 
     @BeforeEach
     void beforeEach() {
-        buyers = new BuyerRepositoryCriteria(getEntityManager());
+        buyers = new BuyerRepositoryCriteria(entityManager);
         buyer1 = buyers.save(new PersonalBuyer(buyer1Name));
         buyer2 = buyers.save(new OrgBuyer(buyer2Name));
     }

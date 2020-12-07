@@ -17,7 +17,7 @@ public abstract class BaseIntegrationTest implements WithAssertions {
 
     protected EntityManager entityManager;
 
-    protected EntityTransaction transaction;
+    private EntityTransaction transaction;
 
     @BeforeAll
     static void beforeAllTest() {
@@ -41,17 +41,5 @@ public abstract class BaseIntegrationTest implements WithAssertions {
     @AfterAll
     static void afterAllTest() {
         emf.close();
-    }
-
-    public static EntityManagerFactory getEmf() {
-        return emf;
-    }
-
-    public EntityManager getEntityManager() {
-        return entityManager;
-    }
-
-    public EntityTransaction getTransaction() {
-        return transaction;
     }
 }

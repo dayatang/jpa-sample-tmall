@@ -20,7 +20,7 @@ class BuyerRepositoryJpqlTest extends BaseIntegrationTest {
 
     @BeforeEach
     void beforeEach() {
-        buyers = new BuyerRepositoryJpql(getEntityManager());
+        buyers = new BuyerRepositoryJpql(entityManager);
         buyer1 = buyers.save(new PersonalBuyer(buyer1Name));
         buyer2 = buyers.save(new OrgBuyer(buyer2Name));
     }
