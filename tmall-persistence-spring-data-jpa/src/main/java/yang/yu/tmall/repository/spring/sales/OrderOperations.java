@@ -26,4 +26,6 @@ public interface OrderOperations {
      * @return 包含特定产品的订单列表
      */
     Stream<Order> findByProduct(Product product, LocalDateTime from, LocalDateTime until);
+
+    Stream<Order> findByOrgBuyers();
 }

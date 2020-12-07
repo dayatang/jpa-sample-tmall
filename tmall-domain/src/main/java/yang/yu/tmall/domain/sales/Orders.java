@@ -16,6 +16,8 @@ public interface Orders {
 
     Stream<Order> findByProduct(Product product);
 
+    Stream<Order> findByOrgBuyers();
+
     Order save(Order order);
 
     void delete(Order order);

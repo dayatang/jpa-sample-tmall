@@ -88,4 +88,11 @@ public class OrderRepositoryTest extends BaseIntegrationTest {
                 .contains(order1)
                 .doesNotContain(order2);
     }
+
+    @Test
+    void findByOrgBuyers() {
+        assertThat(orders.findByOrgBuyers())
+                .contains(order3)
+                .doesNotContain(order1, order2);
+    }
 }

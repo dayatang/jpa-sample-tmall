@@ -34,4 +34,11 @@ public class OrderOperationsImpl implements OrderOperations {
                 .setParameter("untilTime", until)
                 .getResultStream();
     }
+
+    @Override
+    public Stream<Order> findByOrgBuyers() {
+        String jpql = "select o from Order o join o.buyer b where TYPE(b) = OrgBuyer";
+        return entityManager.createQuery(jpql, Order.class)
+                .getResultStream();
+    }
 }

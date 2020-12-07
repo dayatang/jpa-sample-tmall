@@ -39,11 +39,16 @@ public class OrderRepository implements Orders {
 
     @Override
     public Stream<Order> findByProduct(Product product) {
-
         String jpql = "select o.order from OrderLine o where o.product = :product order by o.order.created desc ";
-        //String jpql = "select o from Order o join o.lineItems i where i.product = :product";
         return entityManager.createQuery(jpql, Order.class)
                 .setParameter("product", product)
+                .getResultStream();
+    }
+
+    @Override
+    public Stream<Order> findByOrgBuyers() {
+        String jpql = "select o from Order o join o.buyer b where TYPE(b) = OrgBuyer";
+        return entityManager.createQuery(jpql, Order.class)
                 .getResultStream();
     }
 

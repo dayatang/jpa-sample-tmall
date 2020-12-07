@@ -96,4 +96,11 @@ public class OrdersTest implements WithAssertions {
                 .contains(order1)
                 .doesNotContain(order2);
     }
+
+    @Test
+    void findByOrgBuyers() {
+        assertThat(orders.findByOrgBuyers())
+                .contains(order3)
+                .doesNotContain(order1, order2);
+    }
 }
