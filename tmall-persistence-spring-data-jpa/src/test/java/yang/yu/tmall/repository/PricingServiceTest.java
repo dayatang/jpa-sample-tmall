@@ -72,6 +72,7 @@ public class PricingServiceTest implements WithAssertions {
         LocalDateTime time2002_11_01 = LocalDate.of(2020, 11, 1).atStartOfDay();
         LocalDateTime time2002_10_31 = time2002_11_01.minusSeconds(1);
         LinkedHashSet<Product> productSet = Sets.newLinkedHashSet(product1, product2);
+
         service.adjustPriceByPercentage(productSet, 10, time2002_11_01);
 
         System.out.println("=======================");
@@ -93,5 +94,6 @@ public class PricingServiceTest implements WithAssertions {
         }).isInstanceOf(PricingException.class)
         .hasMessage("电冰箱's price has not been set yet.");
     }
+
 }
 

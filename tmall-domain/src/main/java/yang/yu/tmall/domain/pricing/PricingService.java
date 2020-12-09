@@ -5,7 +5,6 @@ import yang.yu.tmall.domain.products.Product;
 
 import javax.inject.Named;
 import java.time.LocalDateTime;
-import java.util.Map;
 import java.util.Set;
 import java.util.stream.Stream;
 
@@ -47,7 +46,4 @@ public class PricingService {
         return pricings.findPricingHistoryOfProduct(product);
     }
 
-    public Map<Product, Money> PricesAt(LocalDateTime time) {
-        return pricings.getAllProductPriceAt(time);
-    }
 }

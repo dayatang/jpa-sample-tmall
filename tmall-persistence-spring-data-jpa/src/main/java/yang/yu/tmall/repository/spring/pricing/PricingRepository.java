@@ -1,14 +1,12 @@
 package yang.yu.tmall.repository.spring.pricing;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import yang.yu.tmall.domain.commons.Money;
 import yang.yu.tmall.domain.pricing.Pricing;
 import yang.yu.tmall.domain.pricing.Pricings;
 import yang.yu.tmall.domain.products.Product;
 
 import javax.inject.Named;
 import java.time.LocalDateTime;
-import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Stream;
 
@@ -16,7 +14,7 @@ import java.util.stream.Stream;
  * 定价仓储的实现
  */
 @Named
-public interface PricingRepository extends Pricings, PricingQueryOperations, JpaRepository<Pricing, Integer> {
+public interface PricingRepository extends Pricings, JpaRepository<Pricing, Integer> {
 
     @Override
     default Optional<Pricing> getPricingAt(Product product, LocalDateTime time) {

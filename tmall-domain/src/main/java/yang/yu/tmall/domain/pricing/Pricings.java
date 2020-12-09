@@ -35,10 +35,4 @@ public interface Pricings {
      */
     Stream<Pricing> findPricingHistoryOfProduct(Product product);
 
-    /**
-     * 获取在指定时间点的所有商品价格
-     * @param time 时间
-     * @return 所有商品价格的Map，以商品为key，单价为value
-     */
-    Map<Product, Money> getAllProductPriceAt(LocalDateTime time);
 }
