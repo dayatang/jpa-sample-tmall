@@ -7,7 +7,7 @@ import java.util.Optional;
 /**
  * 买家仓储特殊接口
  */
-public interface BuyerOperations {
+public interface BuyerQueryOperations {
 
     /**
      * 根据QQ号码查找员工

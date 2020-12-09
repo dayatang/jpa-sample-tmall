@@ -9,21 +9,21 @@ import java.util.stream.Stream;
 /**
  * 订单仓储的特殊操作接口
  */
-public interface OrderOperations {
+public interface OrderQueryOperations {
 
     /**
-     * 寻找包含特定产品的订单
-     * @param product 产品
-     * @return 包含特定产品的订单列表
+     * 寻找包含特定商品的订单
+     * @param product 商品
+     * @return 包含特定商品的订单列表
      */
     Stream<Order> findByProduct(Product product);
 
     /**
-     * 寻找在一段时间内的、包含特定产品的订单
-     * @param product 产品
+     * 寻找在一段时间内的、包含特定商品的订单
+     * @param product 商品
      * @param from 起始时间
      * @param until 结束时间（不包含）
-     * @return 包含特定产品的订单列表
+     * @return 包含特定商品的订单列表
      */
     Stream<Order> findByProduct(Product product, LocalDateTime from, LocalDateTime until);
 

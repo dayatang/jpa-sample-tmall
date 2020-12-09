@@ -9,11 +9,11 @@ import java.util.Optional;
 /**
  * 买家仓储特殊接口实现
  */
-public class BuyerOperationsImpl implements BuyerOperations {
+public class BuyerQueryOperationsImpl implements BuyerQueryOperations {
 
     private final EntityManager entityManager;
 
-    public BuyerOperationsImpl(EntityManager entityManager) {
+    public BuyerQueryOperationsImpl(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
 

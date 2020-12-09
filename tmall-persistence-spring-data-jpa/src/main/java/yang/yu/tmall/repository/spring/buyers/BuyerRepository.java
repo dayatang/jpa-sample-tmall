@@ -10,6 +10,6 @@ import javax.inject.Named;
  * 买家仓储实现类。
  */
 @Named
-public interface BuyerRepository extends Buyers, JpaRepository<Buyer, Integer>, BuyerOperations {
+public interface BuyerRepository extends Buyers, JpaRepository<Buyer, Integer>, BuyerQueryOperations {
 
 }

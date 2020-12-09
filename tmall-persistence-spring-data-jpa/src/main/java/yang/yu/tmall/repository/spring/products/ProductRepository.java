@@ -7,7 +7,7 @@ import yang.yu.tmall.domain.products.Products;
 import javax.inject.Named;
 
 /**
- * 产品仓储的实现
+ * 商品仓储的实现
  */
 @Named
 public interface ProductRepository extends Products, JpaRepository<Product, Integer> {

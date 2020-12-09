@@ -39,10 +39,10 @@ public class PricingServiceTest implements WithAssertions {
     void beforeEach() {
         product1 = entityManager.merge(new Product("电冰箱", null));
         product2 = entityManager.merge(new Product("电视机", null));
-        pricing1 = service.setUnitPrice(product1, Money.valueOf(500), LocalDate.of(2020,10, 1).atStartOfDay());
-        pricing2 = service.setUnitPrice(product1, Money.valueOf(600), LocalDate.of(2020,2, 15).atStartOfDay());
-        pricing3 = service.setUnitPrice(product2, Money.valueOf(7000), LocalDate.of(2020,7, 14).atStartOfDay());
-        pricing4 = service.setUnitPrice(product2, Money.valueOf(7100), LocalDate.of(2020,2, 15).atStartOfDay());
+        pricing1 = service.setPriceOfProduct(product1, Money.valueOf(500), LocalDate.of(2020,10, 1).atStartOfDay());
+        pricing2 = service.setPriceOfProduct(product1, Money.valueOf(600), LocalDate.of(2020,2, 15).atStartOfDay());
+        pricing3 = service.setPriceOfProduct(product2, Money.valueOf(7000), LocalDate.of(2020,7, 14).atStartOfDay());
+        pricing4 = service.setPriceOfProduct(product2, Money.valueOf(7100), LocalDate.of(2020,2, 15).atStartOfDay());
     }
 
 
@@ -54,7 +54,7 @@ public class PricingServiceTest implements WithAssertions {
 
     @Test
     void getCurrentPrice() {
-        assertThat(service.getCurrentPrice(product1)).isEqualTo(Money.valueOf(500));
+        assertThat(service.currentPriceOfProduct(product1)).isEqualTo(Money.valueOf(500));
     }
 
     @Test
@@ -62,9 +62,9 @@ public class PricingServiceTest implements WithAssertions {
         LocalDateTime time2002_02_15 = LocalDate.of(2020, 2, 15).atStartOfDay();
         LocalDateTime time2002_02_16 = LocalDate.of(2020, 2, 16).atStartOfDay();
         LocalDateTime time2002_10_01 = LocalDate.of(2020, 10, 1).atStartOfDay();
-        assertThat(service.getPriceAt(product1, time2002_02_15)).isEqualTo(Money.valueOf(600));
-        assertThat(service.getPriceAt(product1, time2002_02_16)).isEqualTo(Money.valueOf(600));
-        assertThat(service.getPriceAt(product1, time2002_10_01)).isEqualTo(Money.valueOf(500));
+        assertThat(service.priceOfProductAt(product1, time2002_02_15)).isEqualTo(Money.valueOf(600));
+        assertThat(service.priceOfProductAt(product1, time2002_02_16)).isEqualTo(Money.valueOf(600));
+        assertThat(service.priceOfProductAt(product1, time2002_10_01)).isEqualTo(Money.valueOf(500));
     }
 
     @Test
@@ -75,21 +75,21 @@ public class PricingServiceTest implements WithAssertions {
         service.adjustPriceByPercentage(productSet, 10, time2002_11_01);
 
         System.out.println("=======================");
-        service.findPricingHistoryOfProduct(product1).forEach(System.out::println);
-        service.findPricingHistoryOfProduct(product2).forEach(System.out::println);
+        service.pricingHistoryOfProduct(product1).forEach(System.out::println);
+        service.pricingHistoryOfProduct(product2).forEach(System.out::println);
         System.out.println("=======================");
 
-        assertThat(service.getPriceAt(product1, time2002_11_01)).isEqualTo(Money.valueOf(550));
-        assertThat(service.getPriceAt(product2, time2002_11_01)).isEqualTo(Money.valueOf(7700));
-        assertThat(service.getPriceAt(product1, time2002_10_31)).isEqualTo(Money.valueOf(500));
-        assertThat(service.getPriceAt(product2, time2002_10_31)).isEqualTo(Money.valueOf(7000));
+        assertThat(service.priceOfProductAt(product1, time2002_11_01)).isEqualTo(Money.valueOf(550));
+        assertThat(service.priceOfProductAt(product2, time2002_11_01)).isEqualTo(Money.valueOf(7700));
+        assertThat(service.priceOfProductAt(product1, time2002_10_31)).isEqualTo(Money.valueOf(500));
+        assertThat(service.priceOfProductAt(product2, time2002_10_31)).isEqualTo(Money.valueOf(7000));
     }
 
     @Test
     void priceNotSetYet() {
         assertThatThrownBy(() -> {
             LocalDateTime time2002_02_14 = LocalDate.of(2020, 2, 14).atStartOfDay();
-            service.getPriceAt(product1, time2002_02_14);
+            service.priceOfProductAt(product1, time2002_02_14);
         }).isInstanceOf(PricingException.class)
         .hasMessage("电冰箱's price has not been set yet.");
     }

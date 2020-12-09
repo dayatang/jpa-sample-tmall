@@ -16,7 +16,7 @@ import java.util.Objects;
 public class Pricing extends BaseEntity {
 
     @ManyToOne
-    private Product product;  //产品
+    private Product product;  //商品
 
     private Money unitPrice; //单价
 

@@ -7,11 +7,11 @@ import javax.persistence.EntityManager;
 import java.time.LocalDateTime;
 import java.util.stream.Stream;
 
-public class OrderOperationsImpl implements OrderOperations {
+public class OrderQueryOperationsImpl implements OrderQueryOperations {
 
     private EntityManager entityManager;
 
-    public OrderOperationsImpl(EntityManager entityManager) {
+    public OrderQueryOperationsImpl(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
 

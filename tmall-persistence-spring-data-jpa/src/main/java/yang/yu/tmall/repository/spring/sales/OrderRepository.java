@@ -13,7 +13,7 @@ import java.util.stream.Stream;
  * 订单仓储的实现
  */
 @Named
-public interface OrderRepository extends Orders, JpaRepository<Order, Integer>, OrderOperations {
+public interface OrderRepository extends Orders, JpaRepository<Order, Integer>, OrderQueryOperations {
 
     /**
      * 根据ID获取订单
