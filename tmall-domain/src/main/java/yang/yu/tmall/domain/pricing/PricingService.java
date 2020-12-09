@@ -7,6 +7,7 @@ import yang.yu.tmall.domain.products.Products;
 import javax.inject.Named;
 import java.time.LocalDateTime;
 import java.util.Set;
+import java.util.stream.Stream;
 
 @Named
 public class PricingService {
@@ -40,6 +41,9 @@ public class PricingService {
         return pricings.getPricingAt(product, LocalDateTime.now())
                 .map(Pricing::getUnitPrice)
                 .orElseThrow(() -> new PricingException(product.getName() + "'s price has not been set yet."));
+    }
 
+    public Stream<Pricing> findPricingListByProduct(Product product) {
+        return pricings.findPricingListByProduct(product);
     }
 }

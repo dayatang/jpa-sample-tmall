@@ -8,6 +8,7 @@ import yang.yu.tmall.domain.products.Product;
 import javax.inject.Named;
 import java.time.LocalDateTime;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 /**
  * 定价仓储的实现
@@ -21,4 +22,11 @@ public interface PricingRepository extends Pricings, JpaRepository<Pricing, Inte
     }
 
     Optional<Pricing> findFirstByProductAndEffectiveTimeIsLessThanEqualOrderByEffectiveTimeDesc(Product product, LocalDateTime time);
+
+    @Override
+    default Stream<Pricing> findPricingListByProduct(Product product) {
+        return findByProductOrderByEffectiveTime(product);
+    }
+
+    Stream<Pricing> findByProductOrderByEffectiveTime(Product product);
 }

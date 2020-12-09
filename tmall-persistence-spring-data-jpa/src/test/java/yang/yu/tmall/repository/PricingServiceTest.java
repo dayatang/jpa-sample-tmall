@@ -70,9 +70,15 @@ public class PricingServiceTest implements WithAssertions {
     @Test
     void adjustPriceByPercentage() {
         LocalDateTime time2002_11_01 = LocalDate.of(2020, 11, 1).atStartOfDay();
-        LocalDateTime time2002_10_31 = time2002_11_01.minusNanos(3);
+        LocalDateTime time2002_10_31 = time2002_11_01.minusSeconds(1);
         LinkedHashSet<Product> productSet = Sets.newLinkedHashSet(product1, product2);
         service.adjustPriceByPercentage(productSet, 10, time2002_11_01);
+
+        System.out.println("=======================");
+        service.findPricingListByProduct(product1).forEach(System.out::println);
+        service.findPricingListByProduct(product2).forEach(System.out::println);
+        System.out.println("=======================");
+
         assertThat(service.getPriceAt(product1, time2002_11_01)).isEqualTo(Money.valueOf(550));
         assertThat(service.getPriceAt(product2, time2002_11_01)).isEqualTo(Money.valueOf(7700));
         assertThat(service.getPriceAt(product1, time2002_10_31)).isEqualTo(Money.valueOf(500));
