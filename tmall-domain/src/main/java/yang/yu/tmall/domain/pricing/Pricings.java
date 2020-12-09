@@ -31,6 +31,6 @@ public interface Pricings {
      * @param product 产品
      * @return 指定产品按时间排序的定价历史列表
      */
-    Stream<Pricing> findPricingListByProduct(Product product);
+    Stream<Pricing> findPricingHistoryByProduct(Product product);
 
 }

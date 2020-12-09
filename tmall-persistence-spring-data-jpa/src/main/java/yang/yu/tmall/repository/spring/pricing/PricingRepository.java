@@ -24,7 +24,7 @@ public interface PricingRepository extends Pricings, JpaRepository<Pricing, Inte
     Optional<Pricing> findFirstByProductAndEffectiveTimeIsLessThanEqualOrderByEffectiveTimeDesc(Product product, LocalDateTime time);
 
     @Override
-    default Stream<Pricing> findPricingListByProduct(Product product) {
+    default Stream<Pricing> findPricingHistoryByProduct(Product product) {
         return findByProductOrderByEffectiveTime(product);
     }
 

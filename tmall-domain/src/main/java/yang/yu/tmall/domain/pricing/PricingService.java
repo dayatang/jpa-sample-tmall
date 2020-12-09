@@ -43,7 +43,7 @@ public class PricingService {
                 .orElseThrow(() -> new PricingException(product.getName() + "'s price has not been set yet."));
     }
 
-    public Stream<Pricing> findPricingListByProduct(Product product) {
-        return pricings.findPricingListByProduct(product);
+    public Stream<Pricing> findPricingHistoryByProduct(Product product) {
+        return pricings.findPricingHistoryByProduct(product);
     }
 }
