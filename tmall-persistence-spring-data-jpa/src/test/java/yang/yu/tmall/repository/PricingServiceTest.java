@@ -75,8 +75,8 @@ public class PricingServiceTest implements WithAssertions {
         service.adjustPriceByPercentage(productSet, 10, time2002_11_01);
 
         System.out.println("=======================");
-        service.findPricingHistoryByProduct(product1).forEach(System.out::println);
-        service.findPricingHistoryByProduct(product2).forEach(System.out::println);
+        service.findPricingHistoryOfProduct(product1).forEach(System.out::println);
+        service.findPricingHistoryOfProduct(product2).forEach(System.out::println);
         System.out.println("=======================");
 
         assertThat(service.getPriceAt(product1, time2002_11_01)).isEqualTo(Money.valueOf(550));
