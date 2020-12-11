@@ -21,11 +21,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-
-        <h2.version>1.4.200</h2.version>
-        <mysql.version>8.0.22</mysql.version>
-        <mysql.username>root</mysql.username>
-        <mysql.password></mysql.password>
     </properties>
 
     <dependencyManagement>
@@ -213,7 +208,7 @@
             <properties>
                 <jdbc.groupId>com.h2database</jdbc.groupId>
                 <jdbc.artifactId>h2</jdbc.artifactId>
-                <jdbc.version>${h2.version}</jdbc.version>
+                <jdbc.version>1.4.200</jdbc.version>
                 <jdbc.driverClassName>org.h2.Driver</jdbc.driverClassName>
                 <jdbc.url><![CDATA[jdbc:h2:mem:tmall;DB_CLOSE_DELAY=-1]]></jdbc.url>
                 <jdbc.username>sa</jdbc.username>
@@ -226,12 +221,25 @@
             <properties>
                 <jdbc.groupId>mysql</jdbc.groupId>
                 <jdbc.artifactId>mysql-connector-java</jdbc.artifactId>
-                <jdbc.version>${mysql.version}</jdbc.version>
+                <jdbc.version>8.0.22</jdbc.version>
                 <jdbc.driverClassName>com.mysql.cj.jdbc.Driver</jdbc.driverClassName>
                 <jdbc.url><![CDATA[jdbc:mysql://127.0.0.1:3306/tmalldb?createDatabaseIfNotExist=true]]></jdbc.url>
-                <jdbc.username>${mysql.username}</jdbc.username>
-                <jdbc.password>${mysql.password}</jdbc.password>
+                <jdbc.username>root</jdbc.username>
+                <jdbc.password></jdbc.password>
                 <hibernate.dialect>org.hibernate.dialect.MySQL8Dialect</hibernate.dialect>
+            </properties>
+        </profile>
+        <profile>
+            <id>hsqldb</id>
+            <properties>
+                <jdbc.groupId>org.hsqldb</jdbc.groupId>
+                <jdbc.artifactId>hsqldb</jdbc.artifactId>
+                <jdbc.version>2.5.1</jdbc.version>
+                <jdbc.driverClassName>org.hsqldb.jdbcDriver</jdbc.driverClassName>
+                <jdbc.url><![CDATA[jdbc:hsqldb:mem:tmall;shutdown=true]]></jdbc.url>
+                <jdbc.username>sa</jdbc.username>
+                <jdbc.password />
+                <hibernate.dialect>org.hibernate.dialect.HSQLDialect</hibernate.dialect>
             </properties>
         </profile>
     </profiles>
