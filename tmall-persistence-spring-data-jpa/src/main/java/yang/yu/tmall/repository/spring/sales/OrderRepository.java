@@ -37,6 +37,8 @@ public interface OrderRepository extends Orders, JpaRepository<Order, Integer> {
         return findByBuyerOrderByCreatedDesc(buyer);
     }
 
+    Stream<Order> findByBuyerOrderByCreatedDesc(Buyer buyer);
+
     @Override
     @Query("select o.order from OrderLine o where o.product = :product order by o.order.created desc")
     Stream<Order> findByProduct(@Param("product") Product product);
@@ -48,10 +50,8 @@ public interface OrderRepository extends Orders, JpaRepository<Order, Integer> {
                                 @Param("untilTime") LocalDateTime until);
 
     @Override
-    @Query("select o from Order o join o.buyer b where TYPE(b) = OrgBuyer")
+    @Query("select o from Order o join o.buyer b where TYPE(b) = OrgBuyer order by o.created desc")
     Stream<Order> findByOrgBuyers();
-
-    Stream<Order> findByBuyerOrderByCreatedDesc(Buyer buyer);
 
 
 }
