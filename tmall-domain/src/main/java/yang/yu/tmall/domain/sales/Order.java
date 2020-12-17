@@ -4,6 +4,7 @@ import yang.yu.tmall.domain.buyers.Buyer;
 import yang.yu.tmall.domain.commons.Address;
 import yang.yu.tmall.domain.commons.BaseEntity;
 import yang.yu.tmall.domain.commons.Money;
+import yang.yu.tmall.domain.products.Product;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -44,15 +45,22 @@ public class Order extends BaseEntity {
         return new ArrayList<>(lineItems);
     }
 
-    public void setLineItems(List<OrderLine> lineItems) {
-        this.lineItems = new ArrayList<>(lineItems);
-        calculateTotalPrice();
-    }
-
     public void addLineItem(OrderLine lineItem) {
+        if (lineItem == null) {
+            return;
+        }
+        if (containsProduct(lineItem.getProduct())) {
+            throw new DuplicateOrderLineException();
+        }
         lineItem.setOrder(this);
         lineItems.add(lineItem);
         calculateTotalPrice();
+    }
+
+    private boolean containsProduct(Product product) {
+        return lineItems.stream()
+                .map(OrderLine::getProduct)
+                .anyMatch(product::equals);
     }
 
     public void removeLineItem(OrderLine lineItem) {

@@ -22,6 +22,18 @@ public class ProductCategory extends BaseEntity {
     @OneToMany(mappedBy = "parent")
     private Set<ProductCategory> children = new HashSet<>();
 
+    public ProductCategory() {
+    }
+
+    public ProductCategory(String name) {
+        this.name = name;
+    }
+
+    public ProductCategory(String name, ProductCategory parent) {
+        this.name = name;
+        this.parent = parent;
+    }
+
     public String getName() {
         return name;
     }
