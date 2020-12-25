@@ -37,7 +37,7 @@
         <site>
             <id>github</id>
             <name>TMall GitHub Pages</name>
-            <url>git:ssh://git@github.com/dayatang/jpa-sample-tmall.git?gh-pages#</url>
+            <url>github:https://dayatang.github.io/jpa-sample-tmall/</url>
         </site>
     </distributionManagement>
 
