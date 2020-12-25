@@ -37,7 +37,7 @@
         <site>
             <id>yyang.io</id>
             <name>TMall GitHub Pages</name>
-            <url>scp://yyang.io/data/sites/dddlib</url>
+            <url>scp://yyang.io:53300/data/sites/jpa-sample-tmall</url>
         </site>
     </distributionManagement>
 
