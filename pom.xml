@@ -10,7 +10,7 @@
     <packaging>pom</packaging>
 
     <name>jpa-sample-tmall</name>
-    <url>http://tmall.yyang.io</url>
+    <url>https://dayatang.github.io/jpa-sample-tmall</url>
     <modules>
         <module>tmall-domain</module>
         <module>tmall-persistence-jpa</module>
@@ -35,9 +35,9 @@
             <url>https://nexus.yyang.io/repository/maven-snapshots</url>
         </snapshotRepository>
         <site>
-            <id>github</id>
+            <id>yyang.io</id>
             <name>TMall GitHub Pages</name>
-            <url>github:https://dayatang.github.io/jpa-sample-tmall/</url>
+            <url>scp://www.yyang.io/data/sites/dddlib</url>
         </site>
     </distributionManagement>
 
@@ -144,13 +144,6 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-site-plugin</artifactId>
                     <version>3.9.1</version>
-                    <dependencies>
-                        <dependency>
-                            <groupId>net.trajano.wagon</groupId>
-                            <artifactId>wagon-git</artifactId>
-                            <version>2.0.4</version>
-                        </dependency>
-                    </dependencies>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -171,6 +164,13 @@
                 <filtering>true</filtering>
             </testResource>
         </testResources>
+        <extensions>
+            <extension>
+                <groupId>org.apache.maven.wagon</groupId>
+                <artifactId>wagon-ssh</artifactId>
+                <version>3.4.2</version>
+            </extension>
+        </extensions>
     </build>
 
     <reporting>
