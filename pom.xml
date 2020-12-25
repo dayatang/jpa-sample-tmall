@@ -25,10 +25,15 @@
 
     <distributionManagement>
         <repository>
-            <id>yyang-release</id>
+            <id>yyang-releases</id>
             <name>yyang maven release</name>
-            <url></url>
+            <url>https://nexus.yyang.io/repository/maven-releases</url>
         </repository>
+        <snapshotRepository>
+            <id>yyang-snapshots</id>
+            <name>yyang maven snapshots</name>
+            <url>https://nexus.yyang.io/repository/maven-snapshots</url>
+        </snapshotRepository>
         <site>
             <id>github</id>
             <name>TMall GitHub Pages</name>
