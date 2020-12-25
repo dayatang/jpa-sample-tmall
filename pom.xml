@@ -37,7 +37,7 @@
         <site>
             <id>yyang.io</id>
             <name>TMall GitHub Pages</name>
-            <url>scp://www.yyang.io/data/sites/dddlib</url>
+            <url>scp://yyang.io/data/sites/dddlib</url>
         </site>
     </distributionManagement>
 
