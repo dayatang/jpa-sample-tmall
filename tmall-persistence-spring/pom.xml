@@ -9,7 +9,7 @@
         <artifactId>jpa-sample-tmall</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <artifactId>tmall-persistence-spring-data-jpa</artifactId>
+    <artifactId>tmall-persistence-spring</artifactId>
 
     <dependencies>
         <dependency>

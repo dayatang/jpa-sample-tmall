@@ -14,7 +14,7 @@
     <modules>
         <module>tmall-domain</module>
         <module>tmall-persistence-jpa</module>
-        <module>tmall-persistence-spring-data-jpa</module>
+        <module>tmall-persistence-spring</module>
     </modules>
 
     <properties>
