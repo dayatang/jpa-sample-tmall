@@ -13,7 +13,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>yang.yu.tmall</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>tmall-domain</artifactId>
             <version>${project.version}</version>
         </dependency>
