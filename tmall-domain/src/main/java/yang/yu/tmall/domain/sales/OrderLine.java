@@ -92,20 +92,18 @@ public class OrderLine extends BaseEntity {
     }
 
     public Money getSubTotal() {
+        if (isNew()) {
+            calculateSubTotal();
+        }
         return subTotal;
     }
 
-    public void setSubTotal(Money subTotal) {
-        this.subTotal = subTotal;
-    }
-
-    private Money calculateSubTotal() {
+    @PreUpdate
+    void calculateSubTotal() {
         Money base = unitPrice.multiply(quantity);
         Money discountMoney = base.multiply(discountRate).divide(100);
         this.subTotal = base.subtract(discountMoney);
-        return this.subTotal;
     }
-
 
     @Override
     public boolean equals(Object o) {
