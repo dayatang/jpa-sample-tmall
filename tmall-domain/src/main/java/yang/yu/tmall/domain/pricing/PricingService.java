@@ -37,9 +37,7 @@ public class PricingService {
     }
 
     public Money currentPriceOfProduct(Product product) {
-        return pricings.getPricingAt(product, LocalDateTime.now())
-                .map(Pricing::getUnitPrice)
-                .orElseThrow(() -> new PricingException(product.getName() + "'s price has not been set yet."));
+        return priceOfProductAt(product, LocalDateTime.now());
     }
 
     public Stream<Pricing> pricingHistoryOfProduct(Product product) {
