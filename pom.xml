@@ -15,6 +15,8 @@
         <module>tmall-domain</module>
         <module>tmall-persistence-jpa</module>
         <module>tmall-persistence-spring-data-jpa</module>
+        <module>tmall-application-api</module>
+        <module>tmall-application-impl</module>
     </modules>
 
     <properties>
@@ -53,7 +55,7 @@
             <dependency>
                 <groupId>com.h2database</groupId>
                 <artifactId>h2</artifactId>
-                <version>${h2.version}</version>
+                <version>2.0.204</version>
             </dependency>
             <dependency>
                 <groupId>org.junit.jupiter</groupId>
