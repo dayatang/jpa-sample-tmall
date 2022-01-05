@@ -26,7 +26,7 @@ public class PricingService {
     }
 
     /**
-     * 为单个产品设定价格
+     * 为单个产品设定价格，在指定时间生效
      * @param product 要设定价格的商品
      * @param unitPrice 要设置的单价
      * @param effectiveTime 生效时间
@@ -37,7 +37,7 @@ public class PricingService {
     }
 
     /**
-     * 按百分比对单个产品调整价格
+     * 按百分比对单个产品调整价格，在指定时间生效
      * @param product 要设定价格的商品
      * @param percentage 要调整的单价的百分比。例如10就是价格上调10%，-5就是下调5%
      * @param effectiveTime 生效时间
@@ -49,7 +49,7 @@ public class PricingService {
     }
 
     /**
-     * 按百分比对一批产品调整价格
+     * 按百分比对一批产品调整价格，在指定时间生效
      * @param products 要设定价格的商品
      * @param percentage 要调整的单价的百分比。例如10就是价格上调10%，-5就是下调5%
      * @param effectiveTime 生效时间
