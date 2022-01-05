@@ -6,7 +6,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -21,7 +20,6 @@ import java.util.Map;
 
 @Configuration
 @ComponentScan("yang.yu.tmall")
-@EnableJpaRepositories(basePackages = {"yang.yu.tmall.repository"})
 @EnableTransactionManagement
 @PropertySource("/jdbc.properties")
 public class JpaSpringConfig {
@@ -73,4 +71,8 @@ public class JpaSpringConfig {
         return new JpaTransactionManager(entityManagerFactory);
     }
 
+    @Bean
+    public  IoCInitiator ioCInitiator() {
+        return new IoCInitiator();
+    }
 }
