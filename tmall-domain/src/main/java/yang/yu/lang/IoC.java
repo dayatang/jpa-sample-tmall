@@ -1,15 +1,19 @@
-package yang.yu.tmall.domain.commons;
-
+package yang.yu.lang;
 
 import java.lang.annotation.Annotation;
 import java.util.Set;
 
 /**
- * 实例提供者接口，其实现类以适配器的方式将Bean查找的任务委托给真正的IoC容器，如SpringIoC或Google Guice。
- *
- * @author yyang (<a href="mailto:gdyangyu@gmail.com">gdyangyu@gmail.com</a>)
+ * 依赖注入容器门面类。用于获取容器管理的各种Bean
  */
-public interface InstanceProvider {
+public class IoC {
+
+    private static InstanceProvider provider;
+
+    public static void setProvider(InstanceProvider provider) {
+        IoC.provider = provider;
+    }
+
 
     /**
      * 根据类型获取对象实例。返回的对象实例所属的类是T或它的实现类或子类。如果找不到该类型的实例则抛出异常。
@@ -18,7 +22,9 @@ public interface InstanceProvider {
      * @param beanType 实例的类型
      * @return 指定类型的实例。
      */
-    <T> T getInstance(Class<T> beanType);
+    public static <T> T getInstance(Class<T> beanType) {
+        return provider.getInstance(beanType);
+    }
 
     /**
      * 根据类型和名称获取对象实例。返回的对象实例所属的类是T或它的实现类或子类。不同的IoC容器用不同的方式解释beanName。
@@ -30,7 +36,9 @@ public interface InstanceProvider {
      * @param beanType 实例的类型
      * @return 指定类型的实例。
      */
-    <T> T getInstance(Class<T> beanType, String beanName);
+    public static <T> T getInstance(Class<T> beanType, String beanName) {
+        return provider.getInstance(beanType, beanName);
+    }
 
     /**
      * 根据类型和Annotation获取对象实例。返回的对象实例所属的类是T或它的实现类或子类。不同的IoC容器用不同的方式解释annotation。
@@ -42,7 +50,9 @@ public interface InstanceProvider {
      * @param annotationType 实现类的annotation类型
      * @return 指定类型的实例。
      */
-    <T> T getInstance(Class<T> beanType, Class<? extends Annotation> annotationType);
+    public static <T> T getInstance(Class<T> beanType, Class<? extends Annotation> annotationType) {
+        return provider.getInstance(beanType, annotationType);
+    }
 
     /**
      * 获取指定类型的实例的集合
@@ -51,6 +61,8 @@ public interface InstanceProvider {
      * @param <T>      类型参数
      * @return 指定类型的实例的集合
      */
-    <T> Set<T> getInstances(Class<T> beanType);
+    public static <T> Set<T> getInstances(Class<T> beanType) {
+        return provider.getInstances(beanType);
+    }
 
 }

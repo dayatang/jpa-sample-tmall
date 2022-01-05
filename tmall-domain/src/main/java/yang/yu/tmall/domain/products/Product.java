@@ -1,7 +1,7 @@
 package yang.yu.tmall.domain.products;
 
 import yang.yu.tmall.domain.commons.BaseEntity;
-import yang.yu.tmall.domain.commons.IoC;
+import yang.yu.lang.IoC;
 import yang.yu.tmall.domain.commons.Money;
 import yang.yu.tmall.domain.pricing.Pricing;
 import yang.yu.tmall.domain.pricing.PricingException;

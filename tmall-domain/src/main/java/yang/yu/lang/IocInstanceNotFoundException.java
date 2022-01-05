@@ -1,4 +1,4 @@
-package yang.yu.tmall.domain.commons;
+package yang.yu.lang;
 
 /**
  * 当试图获取在IoC容器中不存在的Bean实例时抛出此异常。

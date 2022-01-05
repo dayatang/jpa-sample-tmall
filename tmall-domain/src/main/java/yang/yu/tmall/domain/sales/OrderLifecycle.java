@@ -1,6 +1,6 @@
 package yang.yu.tmall.domain.sales;
 
-import yang.yu.tmall.domain.commons.IoC;
+import yang.yu.lang.IoC;
 
 import java.util.Comparator;
 import java.util.List;

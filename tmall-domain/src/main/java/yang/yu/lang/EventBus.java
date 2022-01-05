@@ -1,4 +1,4 @@
-package yang.yu.tmall.domain.commons;
+package yang.yu.lang;
 
 import io.reactivex.rxjava3.annotations.NonNull;
 import io.reactivex.rxjava3.core.Observable;
@@ -16,7 +16,7 @@ public class EventBus {
      * 发布事件到事件总线
      * @param event 要发布的事件
      */
-    public static final void post(Object event) {
+    public static void post(Object event) {
         bus.onNext(event);
     }
 
@@ -26,7 +26,7 @@ public class EventBus {
      * @param <T> 事件类型
      * @return 一个元素类型为T的Observable
      */
-    public static final <T> Observable<T> toObservable(Class<T> eventType) {
+    public static <T> Observable<T> toObservable(Class<T> eventType) {
         return bus.ofType(eventType);
     }
 
