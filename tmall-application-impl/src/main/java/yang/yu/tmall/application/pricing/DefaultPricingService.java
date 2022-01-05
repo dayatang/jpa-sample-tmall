@@ -12,11 +12,19 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+/**
+ * 定价服务的实现
+ */
 public class DefaultPricingService implements PricingService {
 
     private final yang.yu.tmall.domain.pricing.PricingService service;
     private final Products products;
 
+    /**
+     * 构造函数
+     * @param service 定价领域服务
+     * @param products 商品仓储
+     */
     public DefaultPricingService(yang.yu.tmall.domain.pricing.PricingService service,
                                  Products products) {
         this.service = service;

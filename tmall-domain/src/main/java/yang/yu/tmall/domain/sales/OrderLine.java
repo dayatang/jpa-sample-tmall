@@ -21,13 +21,21 @@ public class OrderLine extends BaseEntity {
 
     private BigDecimal quantity = BigDecimal.ZERO;
 
+    @Embedded
     @AttributeOverride(name = "value", column = @Column(name = "unit_price"))
+    @AttributeOverrides({
+            @AttributeOverride(name = "value", column = @Column(name = "unit_price"))
+    })
     private Money unitPrice;
 
     @Column(name = "discount_rate")
     private BigDecimal discountRate = BigDecimal.ZERO;
 
+    @Embedded
     @AttributeOverride(name = "value", column = @Column(name = "sub_total"))
+    @AttributeOverrides({
+            @AttributeOverride(name = "value", column = @Column(name = "sub_total"))
+    })
     private Money subTotal;
 
     public OrderLine() {

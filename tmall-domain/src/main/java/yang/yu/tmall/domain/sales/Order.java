@@ -1,5 +1,6 @@
 package yang.yu.tmall.domain.sales;
 
+import yang.yu.lang.IoC;
 import yang.yu.tmall.domain.buyers.Buyer;
 import yang.yu.tmall.domain.commons.Address;
 import yang.yu.tmall.domain.commons.BaseEntity;
@@ -14,6 +15,16 @@ import java.util.Objects;
 @Entity
 @Table(name = "orders")
 public class Order extends BaseEntity {
+
+    protected Order() {
+    }
+
+    public Order(String orderNo, List<OrderLine> lineItems, Buyer buyer, Address shippingAddress) {
+        this.orderNo = orderNo;
+        this.lineItems = lineItems;
+        this.buyer = buyer;
+        this.shippingAddress = shippingAddress;
+    }
 
     @Basic(optional = false)
     @Column(name = "order_no", nullable = false, unique = true)
@@ -35,10 +46,6 @@ public class Order extends BaseEntity {
 
     public String getOrderNo() {
         return orderNo;
-    }
-
-    public void setOrderNo(String orderNo) {
-        this.orderNo = orderNo;
     }
 
     public List<OrderLine> getLineItems() {
@@ -73,32 +80,33 @@ public class Order extends BaseEntity {
         return buyer;
     }
 
-    public void setBuyer(Buyer buyer) {
-        this.buyer = buyer;
-    }
-
     public Address getShippingAddress() {
         return shippingAddress;
-    }
-
-    public void setShippingAddress(Address shippingAddress) {
-        this.shippingAddress = shippingAddress;
     }
 
     public Money getTotalPrice() {
         return totalPrice;
     }
 
-    public void setTotalPrice(Money totalPrice) {
-        this.totalPrice = totalPrice;
+    @Override
+    public void beforeCreate() {
+        super.beforeCreate();
+        calculateTotalPrice();
     }
 
-    private Money calculateTotalPrice() {
+    private void calculateTotalPrice() {
         this.totalPrice = lineItems.stream()
                 .map(OrderLine::getSubTotal)
                 .peek(System.out::println)
                 .reduce(Money.ZERO, Money::add);
-        return this.totalPrice;
+    }
+
+    public void save() {
+        getOrders().save(this);
+    }
+
+    private Orders getOrders() {
+        return IoC.getInstance(Orders.class);
     }
 
     @Override
