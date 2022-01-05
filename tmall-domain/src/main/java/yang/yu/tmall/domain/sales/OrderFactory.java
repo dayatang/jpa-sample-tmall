@@ -5,6 +5,7 @@ import yang.yu.tmall.domain.commons.Address;
 import yang.yu.tmall.domain.pricing.PricingService;
 import yang.yu.tmall.domain.products.Product;
 
+import javax.inject.Named;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
@@ -13,6 +14,7 @@ import java.util.stream.Collectors;
 /**
  * 订单工厂类，创建订单
  */
+@Named
 public class OrderFactory {
 
     private PricingService pricingService;
