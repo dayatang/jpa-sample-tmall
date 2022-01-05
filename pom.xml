@@ -17,6 +17,7 @@
         <module>tmall-persistence-spring-data-jpa</module>
         <module>tmall-application-api</module>
         <module>tmall-application-impl</module>
+        <module>tmall-test-base</module>
     </modules>
 
     <properties>
