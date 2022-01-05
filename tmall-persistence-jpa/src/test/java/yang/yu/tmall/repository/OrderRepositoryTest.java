@@ -17,8 +17,11 @@ import yang.yu.tmall.repository.jpa.OrderRepository;
 import yang.yu.tmall.repository.jpa.PricingRepository;
 
 import javax.transaction.Transactional;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 @Transactional
 public class OrderRepositoryTest extends BaseIntegrationTest {
@@ -57,14 +60,25 @@ public class OrderRepositoryTest extends BaseIntegrationTest {
         lineItem2 = new OrderLine(product1, 5, Money.valueOf(3500));
         lineItem3 = new OrderLine(product2, 3, Money.valueOf(8500));
         lineItem4 = new OrderLine(product2, 2, Money.valueOf(8500));
-        order1 = createOrder("order1", buyer1, lineItem1, lineItem3);
-        order2 = createOrder("order2", buyer1, lineItem2);
-        order3 = createOrder("order3", buyer2, lineItem2, lineItem3);
+
+        Map<Product, BigDecimal> items1 = new HashMap<>();
+        items1.put(product1, BigDecimal.valueOf(3));
+        items1.put(product2, BigDecimal.valueOf(3));
+
+        Map<Product, BigDecimal> items2 = new HashMap<>();
+        items2.put(product1, BigDecimal.valueOf(5));
+
+        Map<Product, BigDecimal> items3 = new HashMap<>();
+        items3.put(product1, BigDecimal.valueOf(5));
+        items3.put(product2, BigDecimal.valueOf(3));
+
+        order1 = createOrder("order1", buyer1, items1);
+        order2 = createOrder("order2", buyer1, items2);
+        order3 = createOrder("order3", buyer2, items3);
     }
 
-    private Order createOrder(String orderNo, Buyer buyer, OrderLine... orderLines) {
-        Order order = new Order(orderNo, Arrays.asList(orderLines), buyer, null);
-        //Arrays.stream(orderLines).forEach(order::addLineItem);
+    private Order createOrder(String orderNo, Buyer buyer, Map<Product, BigDecimal> orderLines) {
+        Order order = orderFactory.createOrder(orderNo, orderLines, buyer, null);
         return entityManager.merge(order);
     }
 

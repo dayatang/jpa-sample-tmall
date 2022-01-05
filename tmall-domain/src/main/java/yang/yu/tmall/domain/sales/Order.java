@@ -24,6 +24,7 @@ public class Order extends BaseEntity {
         this.lineItems = lineItems;
         this.buyer = buyer;
         this.shippingAddress = shippingAddress;
+        lineItems.forEach(item -> item.setOrder(this));
         calculateTotalPrice();
     }
 

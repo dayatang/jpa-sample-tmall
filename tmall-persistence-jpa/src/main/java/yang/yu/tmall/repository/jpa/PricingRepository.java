@@ -27,14 +27,19 @@ public class PricingRepository implements Pricings {
 
     @Override
     public Optional<Pricing> getPricingAt(Product product, LocalDateTime time) {
-        String jpql = "select o from Pricing o where o.product = :product and o.effectiveTime <= :effectiveTime order by o.effectiveTime desc";
-        List<Pricing> resultList = entityManager.createQuery(jpql, Pricing.class).getResultList();
+        String jpql = "select o from Pricing o where o.product = :product and o.effectiveTime <= :time order by o.effectiveTime desc";
+        List<Pricing> resultList = entityManager.createQuery(jpql, Pricing.class)
+                .setParameter("product", product)
+                .setParameter("time", time)
+                .getResultList();
         return resultList.isEmpty() ? Optional.empty() : Optional.of(resultList.get(0));
     }
 
     @Override
     public Stream<Pricing> findPricingHistoryOfProduct(Product product) {
         String jpql = "select o from Pricing o where o.product = :product order by o.effectiveTime";
-        return entityManager.createQuery(jpql, Pricing.class).getResultStream();
+        return entityManager.createQuery(jpql, Pricing.class)
+                .setParameter("product", product)
+                .getResultStream();
     }
 }
