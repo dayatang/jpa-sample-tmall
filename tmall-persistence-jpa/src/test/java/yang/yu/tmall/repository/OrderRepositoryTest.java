@@ -48,10 +48,8 @@ public class OrderRepositoryTest extends BaseIntegrationTest {
     }
 
     private Order createOrder(String orderNo, Buyer buyer, OrderLine... orderLines) {
-        Order order = new Order();
-        order.setOrderNo(orderNo);
-        order.setBuyer(buyer);
-        Arrays.stream(orderLines).forEach(order::addLineItem);
+        Order order = new Order(orderNo, Arrays.asList(orderLines), buyer, null);
+        //Arrays.stream(orderLines).forEach(order::addLineItem);
         return entityManager.merge(order);
     }
 

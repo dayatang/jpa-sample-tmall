@@ -24,6 +24,7 @@ public class Order extends BaseEntity {
         this.lineItems = lineItems;
         this.buyer = buyer;
         this.shippingAddress = shippingAddress;
+        calculateTotalPrice();
     }
 
     @Basic(optional = false)

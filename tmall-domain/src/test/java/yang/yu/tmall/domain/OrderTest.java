@@ -9,6 +9,7 @@ import yang.yu.tmall.domain.sales.Order;
 import yang.yu.tmall.domain.sales.OrderLine;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
 
 class OrderTest extends BaseUnitTest {
 
@@ -28,9 +29,7 @@ class OrderTest extends BaseUnitTest {
         orderLine2.setQuantity(new BigDecimal(3.2));
         orderLine2.setDiscountRate(new BigDecimal(0));
 
-        Order order = new Order();
-        order.addLineItem(orderLine1);
-        order.addLineItem(orderLine2);
+        Order order = new Order("1111", Arrays.asList(orderLine1, orderLine2), null, null);
         double subtotal1 = 150 * 3 * (100 - 30) / 100;
         //System.out.println(subtotal1);
         double subtotal2 = 25.4 * 3.2;
