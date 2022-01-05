@@ -13,7 +13,6 @@ import java.util.stream.Stream;
 /**
  * 定价仓储的实现
  */
-@Named
 public interface PricingRepository extends Pricings, JpaRepository<Pricing, Integer> {
 
     @Override

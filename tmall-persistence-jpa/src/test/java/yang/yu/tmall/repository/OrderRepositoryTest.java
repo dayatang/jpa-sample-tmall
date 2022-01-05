@@ -7,11 +7,13 @@ import yang.yu.tmall.domain.buyers.Buyer;
 import yang.yu.tmall.domain.buyers.OrgBuyer;
 import yang.yu.tmall.domain.buyers.PersonalBuyer;
 import yang.yu.tmall.domain.commons.Money;
+import yang.yu.tmall.domain.pricing.PricingService;
 import yang.yu.tmall.domain.products.Product;
 import yang.yu.tmall.domain.sales.Order;
 import yang.yu.tmall.domain.sales.OrderLine;
 import yang.yu.tmall.domain.sales.Orders;
 import yang.yu.tmall.repository.jpa.OrderRepository;
+import yang.yu.tmall.repository.jpa.PricingRepository;
 
 import javax.transaction.Transactional;
 import java.util.Arrays;
@@ -20,6 +22,8 @@ import java.util.Arrays;
 public class OrderRepositoryTest extends BaseIntegrationTest {
 
     private Orders orders;
+
+    private PricingService pricingService;
 
     private Order order1, order2, order3;
 
@@ -34,6 +38,9 @@ public class OrderRepositoryTest extends BaseIntegrationTest {
     @BeforeEach
     void beforeEach() {
         orders = new OrderRepository(entityManager);
+        PricingRepository pricingRepository = new PricingRepository(entityManager);
+        pricingService = new PricingService(pricingRepository);
+
         product1 = entityManager.merge(new Product("电冰箱", null));
         product2 = entityManager.merge(new Product("电视机", null));
         buyer1 = entityManager.merge(new PersonalBuyer("张三"));
