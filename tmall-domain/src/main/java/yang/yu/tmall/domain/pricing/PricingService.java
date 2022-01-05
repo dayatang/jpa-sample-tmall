@@ -5,6 +5,8 @@ import yang.yu.tmall.domain.products.Product;
 
 import javax.inject.Named;
 import java.time.LocalDateTime;
+import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -72,6 +74,19 @@ public class PricingService {
         return pricings.getPricingAt(product, time)
                 .map(Pricing::getUnitPrice)
                 .orElseThrow(() -> new PricingException(product.getName() + "'s price has not been set yet."));
+    }
+
+    /**
+     * 获得一批商品在指定时间的定价信息
+     * @param products 商品
+     * @param time 时间
+     * @return 当时的商品价格
+     */
+    public Map<Product, Money> getPricingAt(Set<Product> products, LocalDateTime time) {
+        return products.stream()
+                .map(product -> pricings.getPricingAt(product, time))
+                .map(Optional::get)
+                .collect(Collectors.toMap(Pricing::getProduct, Pricing::getUnitPrice));
     }
 
     /**
