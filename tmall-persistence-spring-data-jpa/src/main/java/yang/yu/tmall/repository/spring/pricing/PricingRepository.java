@@ -3,9 +3,8 @@ package yang.yu.tmall.repository.spring.pricing;
 import org.springframework.data.jpa.repository.JpaRepository;
 import yang.yu.tmall.domain.pricing.Pricing;
 import yang.yu.tmall.domain.pricing.Pricings;
-import yang.yu.tmall.domain.products.Product;
+import yang.yu.tmall.domain.catalogue.Product;
 
-import javax.inject.Named;
 import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.stream.Stream;

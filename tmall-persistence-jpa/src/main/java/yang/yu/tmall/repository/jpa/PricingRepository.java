@@ -2,7 +2,7 @@ package yang.yu.tmall.repository.jpa;
 
 import yang.yu.tmall.domain.pricing.Pricing;
 import yang.yu.tmall.domain.pricing.Pricings;
-import yang.yu.tmall.domain.products.Product;
+import yang.yu.tmall.domain.catalogue.Product;
 
 import javax.inject.Named;
 import javax.persistence.EntityManager;

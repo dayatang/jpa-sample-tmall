@@ -3,8 +3,8 @@ package yang.yu.tmall.application.pricing;
 
 import yang.yu.tmall.application.PricingService;
 import yang.yu.tmall.domain.commons.Money;
-import yang.yu.tmall.domain.products.Product;
-import yang.yu.tmall.domain.products.Products;
+import yang.yu.tmall.domain.catalogue.Product;
+import yang.yu.tmall.domain.catalogue.Products;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -43,7 +43,9 @@ public class DefaultPricingService implements PricingService {
 
     @Override
     public void adjustPriceByPercentage(Set<Integer> productIds, int percentage, LocalDateTime effectiveTime) {
-        Set<Product> productSet = productIds.stream().map(this::getProduct).collect(Collectors.toSet());
+        Set<Product> productSet = productIds.stream()
+          .map(this::getProduct)
+          .collect(Collectors.toSet());
         service.adjustPriceByPercentage(productSet, percentage, effectiveTime);
     }
 

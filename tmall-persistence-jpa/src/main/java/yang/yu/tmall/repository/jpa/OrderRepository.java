@@ -1,7 +1,7 @@
 package yang.yu.tmall.repository.jpa;
 
 import yang.yu.tmall.domain.buyers.Buyer;
-import yang.yu.tmall.domain.products.Product;
+import yang.yu.tmall.domain.catalogue.Product;
 import yang.yu.tmall.domain.sales.Order;
 import yang.yu.tmall.domain.sales.Orders;
 

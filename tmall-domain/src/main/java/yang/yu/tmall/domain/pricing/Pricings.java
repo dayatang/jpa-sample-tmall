@@ -1,6 +1,6 @@
 package yang.yu.tmall.domain.pricing;
 
-import yang.yu.tmall.domain.products.Product;
+import yang.yu.tmall.domain.catalogue.Product;
 
 import java.time.LocalDateTime;
 import java.util.Optional;

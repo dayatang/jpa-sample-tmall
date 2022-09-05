@@ -2,7 +2,7 @@ package yang.yu.tmall.domain.pricing;
 
 import yang.yu.tmall.domain.commons.BaseEntity;
 import yang.yu.tmall.domain.commons.Money;
-import yang.yu.tmall.domain.products.Product;
+import yang.yu.tmall.domain.catalogue.Product;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

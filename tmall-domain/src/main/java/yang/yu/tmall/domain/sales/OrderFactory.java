@@ -3,7 +3,7 @@ package yang.yu.tmall.domain.sales;
 import yang.yu.tmall.domain.buyers.Buyer;
 import yang.yu.tmall.domain.commons.Address;
 import yang.yu.tmall.domain.pricing.PricingService;
-import yang.yu.tmall.domain.products.Product;
+import yang.yu.tmall.domain.catalogue.Product;
 
 import javax.inject.Named;
 import java.math.BigDecimal;

@@ -1,4 +1,4 @@
-package yang.yu.tmall.domain.products;
+package yang.yu.tmall.domain.catalogue;
 
 import yang.yu.tmall.domain.commons.BaseEntity;
 
