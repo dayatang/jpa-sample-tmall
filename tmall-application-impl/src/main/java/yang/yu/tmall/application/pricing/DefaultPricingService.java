@@ -3,8 +3,8 @@ package yang.yu.tmall.application.pricing;
 
 import yang.yu.tmall.application.PricingService;
 import yang.yu.tmall.domain.commons.Money;
-import yang.yu.tmall.domain.catalogue.Product;
-import yang.yu.tmall.domain.catalogue.Products;
+import yang.yu.tmall.domain.catalog.Product;
+import yang.yu.tmall.domain.catalog.Products;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

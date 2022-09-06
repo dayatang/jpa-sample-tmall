@@ -8,7 +8,7 @@ import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 import yang.yu.tmall.domain.commons.Money;
 import yang.yu.tmall.domain.pricing.Pricing;
 import yang.yu.tmall.domain.pricing.Pricings;
-import yang.yu.tmall.domain.catalogue.Product;
+import yang.yu.tmall.domain.catalog.Product;
 import yang.yu.tmall.spring.JpaSpringConfig;
 
 import javax.inject.Inject;

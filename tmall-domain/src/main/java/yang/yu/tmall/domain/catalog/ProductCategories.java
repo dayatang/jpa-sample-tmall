@@ -1,4 +1,4 @@
-package yang.yu.tmall.domain.catalogue;
+package yang.yu.tmall.domain.catalog;
 
 public interface ProductCategories {
 }

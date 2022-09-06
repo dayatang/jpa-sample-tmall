@@ -1,8 +1,8 @@
 package yang.yu.tmall.repository.spring.products;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import yang.yu.tmall.domain.catalogue.Product;
-import yang.yu.tmall.domain.catalogue.Products;
+import yang.yu.tmall.domain.catalog.Product;
+import yang.yu.tmall.domain.catalog.Products;
 
 import javax.inject.Named;
 

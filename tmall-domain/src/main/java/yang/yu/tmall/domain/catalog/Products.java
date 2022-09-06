@@ -1,4 +1,4 @@
-package yang.yu.tmall.domain.catalogue;
+package yang.yu.tmall.domain.catalog;
 
 import java.util.Optional;
 import java.util.stream.Stream;
