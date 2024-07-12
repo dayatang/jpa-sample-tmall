@@ -4,7 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import yang.yu.tmall.domain.catalog.Product;
 import yang.yu.tmall.domain.catalog.Products;
 
-import javax.inject.Named;
+import jakarta.inject.Named;
 
 /**
  * 商品仓储的实现

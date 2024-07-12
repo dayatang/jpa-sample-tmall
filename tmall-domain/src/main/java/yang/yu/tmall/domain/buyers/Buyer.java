@@ -3,7 +3,7 @@ package yang.yu.tmall.domain.buyers;
 import yang.yu.tmall.domain.commons.Address;
 import yang.yu.tmall.domain.commons.BaseEntity;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;

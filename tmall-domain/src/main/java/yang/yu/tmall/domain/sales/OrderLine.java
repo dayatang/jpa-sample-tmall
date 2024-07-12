@@ -1,10 +1,10 @@
 package yang.yu.tmall.domain.sales;
 
+import jakarta.persistence.*;
 import yang.yu.tmall.domain.catalog.Product;
 import yang.yu.tmall.domain.commons.BaseEntity;
 import yang.yu.tmall.domain.commons.Money;
 
-import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Objects;
 

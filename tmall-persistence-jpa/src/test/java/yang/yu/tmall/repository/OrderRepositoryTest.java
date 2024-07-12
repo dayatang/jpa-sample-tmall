@@ -16,7 +16,7 @@ import yang.yu.tmall.domain.sales.Orders;
 import yang.yu.tmall.repository.jpa.OrderRepository;
 import yang.yu.tmall.repository.jpa.PricingRepository;
 
-import javax.transaction.Transactional;
+import jakarta.transaction.Transactional;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Arrays;

@@ -22,8 +22,9 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <spring.version>6.1.11</spring.version>
     </properties>
 
     <dependencyManagement>
@@ -31,49 +32,71 @@
             <dependency>
                 <groupId>jakarta.persistence</groupId>
                 <artifactId>jakarta.persistence-api</artifactId>
-                <version>2.2.3</version>
+                <version>3.1.0</version>
             </dependency>
             <dependency>
-                <groupId>javax.inject</groupId>
-                <artifactId>javax.inject</artifactId>
-                <version>1</version>
+                <groupId>jakarta.transaction</groupId>
+                <artifactId>jakarta.transaction-api</artifactId>
+                <version>2.0.1</version>
             </dependency>
             <dependency>
-                <groupId>io.reactivex.rxjava3</groupId>
-                <artifactId>rxjava</artifactId>
-                <version>3.1.3</version>
+                <groupId>jakarta.inject</groupId>
+                <artifactId>jakarta.inject-api</artifactId>
+                <version>2.0.1</version>
             </dependency>
             <dependency>
-                <groupId>org.hibernate</groupId>
-                <artifactId>hibernate-core</artifactId>
-                <version>5.6.3.Final</version>
+                <groupId>jakarta.annotation</groupId>
+                <artifactId>jakarta.annotation-api</artifactId>
+                <version>3.0.0</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework.data</groupId>
                 <artifactId>spring-data-jpa</artifactId>
-                <version>2.7.0</version>
+                <version>3.3.1</version>
+            </dependency>
+            <dependency>
+                <groupId>io.reactivex.rxjava3</groupId>
+                <artifactId>rxjava</artifactId>
+                <version>3.1.8</version>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate.orm</groupId>
+                <artifactId>hibernate-core</artifactId>
+                <version>6.5.2.Final</version>
+                <scope>runtime</scope>
             </dependency>
             <dependency>
                 <groupId>com.h2database</groupId>
                 <artifactId>h2</artifactId>
-                <version>2.0.204</version>
+                <version>2.2.224</version>
+                <scope>runtime</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>2.0.13</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>1.5.6</version>
             </dependency>
             <dependency>
                 <groupId>org.junit.jupiter</groupId>
                 <artifactId>junit-jupiter</artifactId>
-                <version>5.8.2</version>
+                <version>5.10.3</version>
                 <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>org.mockito</groupId>
                 <artifactId>mockito-core</artifactId>
-                <version>4.2.0</version>
+                <version>5.12.0</version>
                 <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>org.assertj</groupId>
                 <artifactId>assertj-core</artifactId>
-                <version>3.21.0</version>
+                <version>3.26.3</version>
                 <scope>test</scope>
             </dependency>
         </dependencies>
@@ -227,14 +250,16 @@
         <profile>
             <id>mysql</id>
             <properties>
-                <jdbc.groupId>mysql</jdbc.groupId>
-                <jdbc.artifactId>mysql-connector-java</jdbc.artifactId>
-                <jdbc.version>8.0.22</jdbc.version>
+                <mysql.username>root</mysql.username>
+                <mysql.password/>
+                <jdbc.groupId>com.mysql</jdbc.groupId>
+                <jdbc.artifactId>mysql-connector-j</jdbc.artifactId>
+                <jdbc.version>9.0.0</jdbc.version>
                 <jdbc.driverClassName>com.mysql.cj.jdbc.Driver</jdbc.driverClassName>
                 <jdbc.url><![CDATA[jdbc:mysql://127.0.0.1:3306/tmalldb?createDatabaseIfNotExist=true]]></jdbc.url>
-                <jdbc.username>root</jdbc.username>
-                <jdbc.password></jdbc.password>
-                <hibernate.dialect>org.hibernate.dialect.MySQL8Dialect</hibernate.dialect>
+                <jdbc.username>${mysql.username}</jdbc.username>
+                <jdbc.password>${mysql.password}</jdbc.password>
+                <hibernate.dialect>org.hibernate.dialect.MySQLDialect</hibernate.dialect>
             </properties>
         </profile>
         <profile>

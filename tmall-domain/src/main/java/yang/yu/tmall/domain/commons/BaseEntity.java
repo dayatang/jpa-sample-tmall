@@ -1,6 +1,6 @@
 package yang.yu.tmall.domain.commons;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 

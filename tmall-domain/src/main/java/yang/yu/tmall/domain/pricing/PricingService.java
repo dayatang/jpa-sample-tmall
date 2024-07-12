@@ -3,7 +3,7 @@ package yang.yu.tmall.domain.pricing;
 import yang.yu.tmall.domain.commons.Money;
 import yang.yu.tmall.domain.catalog.Product;
 
-import javax.inject.Named;
+import jakarta.inject.Named;
 import java.time.LocalDateTime;
 import java.util.Map;
 import java.util.Optional;

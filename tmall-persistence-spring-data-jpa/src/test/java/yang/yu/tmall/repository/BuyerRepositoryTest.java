@@ -8,8 +8,8 @@ import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 import yang.yu.tmall.domain.buyers.*;
 import yang.yu.tmall.spring.JpaSpringConfig;
 
-import javax.inject.Inject;
-import javax.transaction.Transactional;
+import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
 
 @SpringJUnitConfig(classes = JpaSpringConfig.class)
 @Transactional

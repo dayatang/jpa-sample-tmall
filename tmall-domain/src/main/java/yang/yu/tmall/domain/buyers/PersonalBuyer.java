@@ -1,6 +1,6 @@
 package yang.yu.tmall.domain.buyers;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.HashMap;
 import java.util.Map;
 

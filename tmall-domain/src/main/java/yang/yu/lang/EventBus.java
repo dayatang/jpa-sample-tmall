@@ -5,29 +5,22 @@ import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.subjects.PublishSubject;
 import io.reactivex.rxjava3.subjects.Subject;
 
+import java.util.function.Consumer;
+
 /**
  * 事件总线
  */
-public class EventBus {
-
-    private static final @NonNull Subject<Object> bus = PublishSubject.create().toSerialized();
+public interface EventBus {
 
     /**
      * 发布事件到事件总线
      * @param event 要发布的事件
      */
-    public static void post(Object event) {
-        bus.onNext(event);
-    }
+    void post(@NonNull Object event);
 
-    /**
-     * 获取特定类型事件的Observable，供各种客户端监听。
-     * @param eventType 要监听的事件的类
-     * @param <T> 事件类型
-     * @return 一个元素类型为T的Observable
-     */
-    public static <T> Observable<T> toObservable(Class<T> eventType) {
-        return bus.ofType(eventType);
-    }
+
+    <T> void subscribe(@NonNull Class<T> eventClass, @NonNull Consumer<T> consumer);
+
+    <T> void unsubscribe(@NonNull Class<T> eventClass);
 
 }

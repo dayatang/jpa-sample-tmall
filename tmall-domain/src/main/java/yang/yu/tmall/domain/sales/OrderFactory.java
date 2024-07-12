@@ -5,7 +5,7 @@ import yang.yu.tmall.domain.commons.Address;
 import yang.yu.tmall.domain.pricing.PricingService;
 import yang.yu.tmall.domain.catalog.Product;
 
-import javax.inject.Named;
+import jakarta.inject.Named;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;

@@ -2,7 +2,7 @@ package yang.yu.tmall.domain.sales;
 
 import yang.yu.tmall.domain.commons.BaseEntity;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 /**

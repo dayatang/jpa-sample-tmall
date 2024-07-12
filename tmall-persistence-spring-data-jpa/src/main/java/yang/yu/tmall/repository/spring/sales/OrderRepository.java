@@ -8,7 +8,7 @@ import yang.yu.tmall.domain.catalog.Product;
 import yang.yu.tmall.domain.sales.Order;
 import yang.yu.tmall.domain.sales.Orders;
 
-import javax.inject.Named;
+import jakarta.inject.Named;
 import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.stream.Stream;

@@ -5,7 +5,7 @@ import yang.yu.tmall.domain.buyers.Buyers;
 import yang.yu.tmall.domain.buyers.ImType;
 import yang.yu.tmall.domain.buyers.PersonalBuyer;
 
-import javax.persistence.EntityManager;
+import jakarta.persistence.EntityManager;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;

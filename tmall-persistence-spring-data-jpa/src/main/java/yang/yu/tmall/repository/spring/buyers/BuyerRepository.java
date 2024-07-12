@@ -8,7 +8,7 @@ import yang.yu.tmall.domain.buyers.Buyers;
 import yang.yu.tmall.domain.buyers.ImType;
 import yang.yu.tmall.domain.buyers.PersonalBuyer;
 
-import javax.inject.Named;
+import jakarta.inject.Named;
 import java.util.Optional;
 
 /**

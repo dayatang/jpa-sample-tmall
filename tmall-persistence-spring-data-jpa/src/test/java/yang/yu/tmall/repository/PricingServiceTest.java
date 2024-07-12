@@ -13,9 +13,9 @@ import yang.yu.tmall.domain.pricing.PricingService;
 import yang.yu.tmall.domain.catalog.Product;
 import yang.yu.tmall.spring.JpaSpringConfig;
 
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.transaction.Transactional;
+import jakarta.inject.Inject;
+import jakarta.persistence.EntityManager;
+import jakarta.transaction.Transactional;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Arrays;

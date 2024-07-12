@@ -7,7 +7,7 @@ import yang.yu.tmall.domain.commons.BaseEntity;
 import yang.yu.tmall.domain.commons.Money;
 import yang.yu.tmall.domain.catalog.Product;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;

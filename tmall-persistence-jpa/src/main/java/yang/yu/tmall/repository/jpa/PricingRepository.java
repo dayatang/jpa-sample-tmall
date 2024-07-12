@@ -4,8 +4,8 @@ import yang.yu.tmall.domain.pricing.Pricing;
 import yang.yu.tmall.domain.pricing.Pricings;
 import yang.yu.tmall.domain.catalog.Product;
 
-import javax.inject.Named;
-import javax.persistence.EntityManager;
+import jakarta.inject.Named;
+import jakarta.persistence.EntityManager;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
