@@ -9,14 +9,9 @@
         <artifactId>jpa-sample-tmall</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <artifactId>tmall-domain</artifactId>
+    <artifactId>tmall-lang</artifactId>
 
     <dependencies>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>tmall-lang</artifactId>
-            <version>${project.version}</version>
-        </dependency>
         <dependency>
             <groupId>jakarta.persistence</groupId>
             <artifactId>jakarta.persistence-api</artifactId>

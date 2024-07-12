@@ -18,6 +18,8 @@
         <module>tmall-application-api</module>
         <module>tmall-application-impl</module>
         <module>tmall-test-base</module>
+        <module>tmall-lang</module>
+        <module>tmall-lang-impl</module>
     </modules>
 
     <properties>

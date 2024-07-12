@@ -9,7 +9,7 @@
         <artifactId>jpa-sample-tmall</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <artifactId>tmall-domain</artifactId>
+    <artifactId>tmall-lang-impl</artifactId>
 
     <dependencies>
         <dependency>
@@ -24,6 +24,10 @@
         <dependency>
             <groupId>jakarta.inject</groupId>
             <artifactId>jakarta.inject-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.reactivex.rxjava3</groupId>
+            <artifactId>rxjava</artifactId>
         </dependency>
     </dependencies>
 </project>
