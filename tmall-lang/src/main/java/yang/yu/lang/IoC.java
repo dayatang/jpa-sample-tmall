@@ -1,10 +1,6 @@
 package yang.yu.lang;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.lang.annotation.Annotation;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -26,8 +22,6 @@ import java.util.Set;
  * @author yyang (<a href="mailto:gdyangyu@gmail.com">gdyangyu@gmail.com</a>)
  */
 public class IoC {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(IoC.class);
 
     //实例提供者，代表真正的IoC容器
     private static InstanceProvider instanceProvider;
