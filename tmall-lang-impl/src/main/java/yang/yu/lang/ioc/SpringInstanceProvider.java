@@ -10,9 +10,7 @@ import yang.yu.lang.IocInstanceNotFoundException;
 import yang.yu.lang.IocInstanceNotUniqueException;
 
 import java.lang.annotation.Annotation;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 实例提供者接口的Spring实现。
@@ -122,8 +120,8 @@ public class SpringInstanceProvider implements InstanceProvider {
     }
 
     @Override
-    public <T> List<T> getInstances(Class<T> beanType) {
-        return new ArrayList<>(applicationContext.getBeansOfType(beanType).values());
+    public <T> Set<T> getInstances(Class<T> beanType) {
+        return new HashSet<>(applicationContext.getBeansOfType(beanType).values());
     }
 
     @SuppressWarnings("unchecked")

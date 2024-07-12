@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 
 import java.lang.annotation.Annotation;
 import java.util.List;
+import java.util.Set;
 
 /**
  * <p>
@@ -81,7 +82,7 @@ public class IoC {
         return instanceProvider.getInstance(beanType, annotationType);
     }
 
-    public static <T> List<T> getInstances(Class<T> beanType) {
+    public static <T> Set<T> getInstances(Class<T> beanType) {
         return instanceProvider.getInstances(beanType);
     }
 

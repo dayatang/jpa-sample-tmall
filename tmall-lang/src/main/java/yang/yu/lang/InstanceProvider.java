@@ -3,6 +3,7 @@ package yang.yu.lang;
 
 import java.lang.annotation.Annotation;
 import java.util.List;
+import java.util.Set;
 
 /**
  * IoC实例提供者接口，其实现类以适配器的方式将Bean查找的任务委托给真正的IoC容器，如SpringIoC或Google Guice。
@@ -47,6 +48,6 @@ public interface InstanceProvider {
      * @param <T> 类型参数
      * @return 指定类型的实例的集合
      */
-    <T> List<T> getInstances(Class<T> beanType);
+    <T> Set<T> getInstances(Class<T> beanType);
 
 }

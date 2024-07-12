@@ -10,6 +10,6 @@ public class IoCInitiator implements ApplicationContextAware {
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         SpringInstanceProvider instanceProvider = new SpringInstanceProvider(applicationContext);
-        IoC.setProvider(instanceProvider);
+        IoC.setInstanceProvider(instanceProvider);
     }
 }
