@@ -13,9 +13,19 @@ public interface EventBus {
      */
     void post(Object event);
 
-
+    /**
+     * 订阅事件
+     * @param eventClass 事件类
+     * @param consumer 事件消费者
+     * @param <T> 事件类型
+     */
     <T> void subscribe(Class<T> eventClass, Consumer<T> consumer);
 
+    /**
+     * 取消订阅
+     * @param eventClass 事件类
+     * @param <T> 事件类型
+     */
     <T> void unsubscribe(Class<T> eventClass);
 
 }
