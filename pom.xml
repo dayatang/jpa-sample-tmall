@@ -13,13 +13,12 @@
     <url>http://tmall.yyang.io</url>
     <modules>
         <module>tmall-domain</module>
-        <module>tmall-persistence-jpa</module>
-        <module>tmall-persistence-spring-data-jpa</module>
         <module>tmall-application-api</module>
         <module>tmall-application-impl</module>
         <module>tmall-test-base</module>
         <module>tmall-lang</module>
         <module>tmall-lang-impl</module>
+        <module>tmall-infra</module>
     </modules>
 
     <properties>
